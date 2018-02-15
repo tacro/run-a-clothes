@@ -1,0 +1,13 @@
+<div>
+  <div class="container">
+    <% @posts.each do |post| %>
+      <div class="image_index">
+        <div>
+          <%= link_to("/posts/#{post.id}") do %>
+             <img src="<%= "/post_images/#{post.image_name}" %>">
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

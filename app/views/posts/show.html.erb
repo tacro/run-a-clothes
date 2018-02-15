@@ -1,0 +1,102 @@
+<div class="main posts-show">
+  <!-- <div class="container"> -->
+    <div class="posts-show-item">
+      <!-- show information of the item -->
+      <div class="headline">
+        <%=@post.user.brand_name %>
+      </div>
+      <div class="headline">
+        <%=@post.name %>
+      </div>
+      <div>
+        <img src="<%= "/post_images/#{@post.image_name}" %>" class="item-image">
+      </div>
+      <div class="clear_float"></div>
+      <div class="caption">
+        <%= simple_format(@post.caption) %>
+      </div>
+      <div class="headline">
+        ¥<%=@post.price%>(税抜き)
+      </div>
+      <!-- purchase button -->
+      <div class="post-right">
+      <%= link_to("/checkout/confirm") do %>
+        <button class="button" type="submit">購入する</button>
+     <% end %>
+     <!-- likes -->
+     <%if @current_user %>
+        <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+           <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %>
+            <span class="fa fa-heart like-btn-unlike"></span>
+           <% end %>
+        <% else %>
+          <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
+            <span class="fa fa-heart like-btn"></span>
+          <% end %>
+        <% end %>
+      <% end %>
+      <div class="fa">
+        <%= @likes_count %>
+      </div>
+      </div>
+      <div class="clear_float"></div>
+
+      <!-- designer's info -->
+      <div class="post-user-name">
+        <img src="<%= "/user_images/#{@user.icon_image_name}" %>" class="user-icon">
+        <%= link_to(@user.name , "/users/#{@user.id}") %>
+      </div>
+      <div class="headline">
+        <%= simple_format(@post.detail) %>
+      </div>
+
+      <!-- comments -->
+      <div class="headline">
+        コメント
+      </div>
+      <% @comments.each do |comment| %>
+        <div class="comments">
+          <!-- <div class="post-right"> -->
+            <%= link_to("/users/#{comment.user.id}") do %>
+              <img src="<%= "/user_images/#{comment.user.icon_image_name}" %>" class="commentator_icon">
+            <% end %>
+            <div class="commentator_name">
+              <%= link_to(comment.user.name, "/users/#{comment.user.id}") %>
+            </div>
+            <div class="clear_float"></div>
+            <!-- <div class="post-left"> -->
+              <%= simple_format(comment.comment) %>
+            <!-- </div> -->
+          <!-- </div> -->
+        <%if @current_user %>
+          <% if comment.user_id == @current_user.id || @post.designer_id == @current_user.id %>
+          <div class="post-menus">
+            <%= link_to("削除", "/comments/#{comment.id}/destroy",{method: "post"}) %>
+          </div>
+          <% end %>
+        <% end %>
+        </div>
+      <% end %>
+      <%= form_tag("/posts/#{@post.id}/comment") do %>
+      <div class="comment_content">
+        <textarea name="comment"></textarea>
+      </div>
+      <button type="submit" class="button">コメントする</button>
+    <% end %>
+    <!-- time post created -->
+      <div class="post-time">
+        <%= @post.created_at %>
+      </div>
+
+    <!-- link to edit and destroy -->
+    <%if @current_user %>
+      <% if @post.designer_id == @current_user.id %>
+      <div class="post-menus">
+        <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+        <%= link_to("削除", "/posts/#{@post.id}/destroy",{method: "post"}) %>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+  <!-- </div> -->
+</div>

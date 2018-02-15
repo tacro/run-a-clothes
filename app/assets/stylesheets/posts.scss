@@ -1,0 +1,193 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* posts/index ================================ */
+.posts-index-item {
+  padding: 20px 30px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 6px #c1ced7;
+  float: left;
+}
+
+.post-left img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px #c1ced7;
+  object-fit: cover;
+  float: left;
+}
+
+
+.post-user-name a {
+  font-weight: 600;
+}
+
+.post-user-name a:hover {
+  color: black;
+}
+
+.post-left {
+  left: 30px;
+}
+
+.post-right {
+  float: left;
+  width: 90%;
+  padding-left: 25px;
+  text-align: left;
+}
+
+/* posts/show ================================ */
+.posts-show form {
+  display: inline;
+}
+
+.posts-show-item {
+  padding: 15px;
+  background-color: white;
+  //box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+}
+
+.posts-show-item .user-icon {
+  width: 45px;
+  height: 45px;
+  box-shadow: 0 2px 6px #c1ced7;
+  border-radius: 50%;
+  vertical-align: middle;
+  object-fit: cover;
+  position: relative;
+  left: 3%;
+}
+
+.posts-show-item .item-image {
+  width: 72%;
+  height: 107%;
+  max-width: 380px;
+  max-height: 568px;
+  vertical-align: middle;
+  float: none;
+  object-fit: cover;
+  display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.posts-show-item .post-user-name a {
+  vertical-align: middle;
+  font-size: 18px;
+  margin-left: 12px;
+  position: relative;
+  left: 2%;
+}
+
+.posts-show-item .headline {
+  font-size: 18px;
+  margin: 15px 0;
+  position: relative;
+  left: 5%
+}
+
+.posts-show-item .button{
+        max-width: 140px;
+        height: 37px;
+        margin-bottom: 12px;
+        text-align: center;
+        color: white;
+        background-color: black;
+        padding: 10px;
+        font-size: 15px;
+        position: relative;
+        left: 3%;
+        }
+
+.posts-show-item .caption {
+  float: right;
+  font-size: 7px;
+  margin: 10px 10px 10px 10px;
+  //position: relative;
+  right:  20%;
+  border: dashed 1px black;
+  padding: 5px 15px 3px 3px;
+}
+
+.comments{
+  font-size: 16px;
+  box-shadow: 0 2px 6px #c1ced7;
+  padding: 20px 30px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.commentator_name{
+  float: left;
+  font-size: 12px;
+  padding-left: 5px;
+}
+
+.commentator_icon{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  vertical-align: middle;
+  object-fit: cover;
+  float: left;
+}
+
+.comment_content{
+    font-size: 12px;
+    padding: 10px 10px 10px 0px;
+    resize: none;
+    position: relative;
+    left: 3%;
+}
+
+.post-time {
+  color: #8899a6;
+  margin-bottom: 10px;
+}
+
+.like-btn {
+  color: #8899a6;
+  position: relative;
+  left: 15%;
+}
+
+.like-btn-unlike {
+  color: #ff2581;
+  position: relative;
+  left: 15%;
+}
+
+.posts-show-item .fa {
+  font-size: 16px;
+  margin-right: 3px;
+  position: relative;
+  left: 5%;;
+}
+
+.post-menus {
+  float: right;
+}
+
+.post-menus a, .post-menus input {
+  color: #8899a6;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/* posts/new ================================ */
+.posts-new textarea {
+  font-size: 12px;
+  padding: 10px;
+  min-height: 140px;
+  border: 1px solid rgb(216, 218, 223);
+  resize: none;
+}
+
+.posts-new textarea::-webkit-input-placeholder {
+  font-size: 12px;
+  opacity: 0.5;
+}

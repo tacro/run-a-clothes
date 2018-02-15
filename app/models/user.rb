@@ -1,0 +1,12 @@
+class User < ApplicationRecord
+
+  has_secure_password
+  validates :name, {presence: true}
+  validates :email, {presence: true , uniqueness: true}
+  validates :user_group, {presence: true}
+  validates :gender, {presence: true}
+
+  def posts
+    return Post.where(designer_id: self.id)
+  end
+end

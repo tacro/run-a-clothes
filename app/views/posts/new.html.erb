@@ -1,0 +1,34 @@
+<div class="main posts-new">
+  <div class="container">
+
+  <h1 class="form-heading">投稿する</h1>
+
+    <%= form_tag("/posts/create" , {multipart: true}) do %>
+
+    <div class="form">
+      <div class="form-body">
+
+          <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
+          <p>アイテム画像（必須）</p>
+          <input name="image" type="file">
+          <p>アイテム名（必須）</p>
+          <input name="name" value="<%= @post.name %>">
+          <p>価格（必須）</p>
+          <input name="price" value="<%= @post.price %>" placeholder="税抜き価格を入力してください">
+          <p>アイテム詳細1（必須）</p>
+          <textarea name="caption" value="<%= @post.caption %>" placeholder="サイズ、素材、モデルの身長や体重などを入力してください"><%= @post.caption %></textarea>
+          <p>アイテム詳細2</p>
+          <textarea name="detail" value="<%= @post.detail %>" placeholder="その他アイテムに関する情報を自由に入力してください"><%= @post.detail %></textarea>
+          <input type="submit" value="出品">
+      </div>
+    </div>
+
+    <% end %>
+
+  </div>
+</div>

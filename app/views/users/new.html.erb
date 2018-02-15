@@ -1,0 +1,30 @@
+<<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">新規ユーザー登録</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <% @user.errors.full_messages.each do |message| %>
+               <div>
+                 <%= message %>
+               </div>
+        <% end %>
+        <%= form_tag("/users/create") do %>
+        <p>ユーザー名</p>
+        <input name="name" value="<%= @user.name %>">
+        <p>性別</p>
+        <%= select_tag 'gender[type]', options_for_select(["女性", "男性", "その他"]) %>
+        <!-- <select name="sex">
+        <option value="women" selected>女性</option>
+        <option value="men">男性</option>
+        <option value="other">その他</option>
+        </select></p> -->
+        <p>メールアドレス</p>
+        <input name="email" value="<%= @user.email %>">
+        <p>パスワード</p>
+        <input type="password" name="password">
+        <input type="submit" value="新規登録">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

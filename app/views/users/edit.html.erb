@@ -1,0 +1,41 @@
+<div class="main users-edit">
+  <div class="container">
+    <div class="form-heading">ユーザー情報の編集</div>
+    <div class="form users-form">
+      <div class="form-body">
+
+        <% @user.errors.full_messages.each do |message| %>
+                 <div class="form-error">
+                   <%= message %>
+                 </div>
+        <% end %>
+        <%if @user.brand_name %>
+          <%= form_tag("/users/#{@user.id}/update_designer", {multipart: true}) do %>
+          <p>デザイナー(ユーザー)名</p>
+          <input name="designer_name" value="<%= @user.name %>">
+          <p>ブランド名</p>
+          <input name="brand_name" value="<%= @user.brand_name %>">
+          <p>アイコン</p>
+          <input name="image"  type="file">
+          <p>コメント</p>
+          <textarea name="profile"><%= @user.designer_profile %></textarea>
+          <p>メールアドレス</p>
+          <input name="email" value="<%= @user.email %>">
+          <input type="submit" value="保存">
+          <% end %>
+        <%else %>
+          <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+          <p>ユーザー名</p>
+          <input name="name" value="<%= @user.name %>">
+          <p>アイコン</p>
+          <input name="image"  type="file">
+          <p>メールアドレス</p>
+          <input name="email" value="<%= @user.email %>">
+          <input type="submit" value="保存">
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

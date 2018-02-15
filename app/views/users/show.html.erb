@@ -1,0 +1,38 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <img src="<%= "/user_images/#{@user.icon_image_name}" %>">
+      <h2><%=@user.name %></h2>
+      <%if @user.user_group == 2%>
+        <p>Brand: <%= @user.brand_name %></p>
+        <!-- <h2>Profile:</h2> -->
+        <p><%= @user.designer_profile %></p>
+      <% end %>
+      <%if @current_user %>
+        <%if @user.id == @current_user.id %>
+          <p><%= @user.email %></p>
+          <%=  link_to( "編集", "/users/#{@user.id}/edit") %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="clear_float"></div>
+    <% if @user.brand_name %>
+        <ul class="user-tabs">
+          <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+          <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+        </ul>
+
+        <% @user.posts.each do |post| %>
+         <div class="image_index">
+           <%= link_to("/posts/#{post.id}") do %>
+              <img src="<%= "/post_images/#{post.image_name}" %>">
+           <% end %>
+         </div>
+       <% end %>
+     <% else %>
+       <ul class="user-tabs">
+         <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+       </ul>
+     <% end %>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">編集する</h1>
+    <%= form_tag("/posts/#{@post.id}/update",  {multipart: true}) do %>
+    <div class="form">
+      <div class="form-body">
+          <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <p>picture</p>
+          <input name="image" type="file" value="<%= @post.image_name %>">
+          *何も選択しなかった場合、元の画像がそのまま残ります。
+          <p>商品名</p>
+          <input name="name" value="<%= @post.name %>">
+          <p>price</p>
+          <input name="price" value="<%= @post.price %>">
+          <p>caption</p>
+          <textarea name="caption" value="size,material, model's hight and weight"><%= @post.caption %></textarea>
+          <p>detail</p>
+          <textarea name="detail" value="detail about the item"><%= @post.detail %></textarea>
+        <input type="submit" value="保存">
+      </div>
+    </div>
+    <% end%>
+  </div>
+</div>
