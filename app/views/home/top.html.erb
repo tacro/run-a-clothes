@@ -4,7 +4,7 @@
       <div class="image_index">
         <div>
           <%= link_to("/posts/#{post.id}") do %>
-             <%= image_tag post.image_name[0].standard.url %>
+              <%= image_tag(post.image_name[0].url(:standard) , :alt => post.id)%>
           <% end %>
         </div>
       </div>

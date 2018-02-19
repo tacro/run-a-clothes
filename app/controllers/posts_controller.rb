@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def new
     if @current_user.user_group != 2
       flash[:notice]="出品にはデザイナー登録が必要です"
-      redirect_to("/signup_designer")
+      redirect_to("/users/#{@current_user.id}/signup_designer")
     end
     @post = Post.new
   end

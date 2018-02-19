@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'login' => "users#login_form"
   post 'login' => "users#login"
   post 'logout' => "users#logout"
-  get 'signup_designer' => "users#new_designer"
+  get 'users/:id/signup_designer' => "users#new_designer"
   patch 'users/:id/register_designer' => "users#register_designer"
 
   post 'users/create' => "users#create"

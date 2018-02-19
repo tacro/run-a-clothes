@@ -1,6 +1,8 @@
 class ItemImageUploader < CarrierWave::Uploader::Base
     # Include RMagick or MiniMagick support:
-     include Cloudinary::CarrierWave
+    if Rails.env.production?
+      include Cloudinary::CarrierWave
+    end
      include CarrierWave::RMagick
     # include CarrierWave::MiniMagick
 
@@ -53,7 +55,7 @@ class ItemImageUploader < CarrierWave::Uploader::Base
     # Override the filename of the uploaded files:
     # Avoid using model.id or version_name here, see uploader/store.rb for details.
     def filename
-     "#{secure_token}.jpg" if original_filename.present?
+     "#{secure_token}.png" if original_filename.present?
    end
 
    def public_id
