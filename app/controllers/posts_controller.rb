@@ -1,14 +1,14 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user, {only: [:new, :comment]}
+  before_action :authenticate_user, {only: [:comment]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
-  before_action :authenticate_designer, {only: [:create, :edit, :update, :destroy]}
+  before_action :authenticate_designer, {only: [:new, :create, :edit, :update, :destroy]}
 
   def index
     @posts = Post.all.order(created_at: :desc)
   end
 
   def new
-    if @current_user.user_group == 1
+    if @current_user.user_group != 2
       flash[:notice]="出品にはデザイナー登録が必要です"
       redirect_to("/signup_designer")
     end
@@ -16,20 +16,17 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(
-      name: params[:name],
-      price: params[:price],
-      designer_id: @current_user.id,
-      caption: params[:caption],
-      detail: params[:detail]
+    post = params.require(:post).permit(
+      :name,
+      :designer_id,
+      {image_name: []},
+      :price,
+      :caption,
+      :detail
     )
-    if params[:image]
-      image = params[:image]
-      @post.image_name = "#{SecureRandom.uuid}.jpg"
-      File.binwrite("public/post_images/#{@post.image_name}", image.read)
-    end
+    @post = Post.new(post)
     if @post.save
-      flash[:notice]="posted!"
+      flash[:notice]="出品が完了しました"
       redirect_to("/")
     else
       render("posts/new")
@@ -49,16 +46,14 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by(id: params[:id])
-    @post.name = params[:name]
-    @post.price = params[:price]
-    @post.caption = params[:caption]
-    @post.detail =  params[:detail]
-    if params[:image]
-      image = params[:image]
-      @post.image_name = "#{SecureRandom.uuid}.jpg"
-      File.binwrite("public/post_images/#{@post.image_name}", image.read)
-    end
-    if @post.save
+    post = params.require(:post).permit(
+      :name,
+      {image_name: []},
+      :price,
+      :caption,
+      :detail
+    )
+    if @post.update_attributes(post)
       flash[:notice]="投稿を編集しました"
       redirect_to("/posts/#{@post.id}")
     else

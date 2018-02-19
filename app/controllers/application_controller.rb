@@ -23,14 +23,14 @@ class ApplicationController < ActionController::Base
   def forbid_login_user
     if @current_user
       flash[:notice] = "すでにログインしています"
-      redirect_to("/posts/index")
+      redirect_to("/")
     end
   end
 
   def forbid_login_designer
     if @current_user.user_group == 2
-      flash[:notice] = "すでにログインしています"
-      redirect_to("/posts/index")
+      flash[:notice] = "デザイナー登録済みです"
+      redirect_to("/")
       end
   end
 

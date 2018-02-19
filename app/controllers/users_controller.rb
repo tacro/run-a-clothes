@@ -9,20 +9,14 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
   end
 
   def create
-     @user = User.new(
-       name: params[:name],
-       email: params[:email],
-       password: params[:password],
-       user_group: 1,
-       icon_image_name: "default_icon.png",
-     )
-     if params[:gender][:type] == "女性" then
-       @user.gender= 0
-     elsif params[:gender][:type] == "男性" then
-       @user.gender= 1
-     elsif params[:gender][:type] == "その他" then
-       @user.gender= 2
-     end
+    user = params.require(:user).permit(
+      :name,
+      :user_group,
+      :gender,
+      :email,
+      :password
+    )
+     @user = User.new(user)
      if @user.save
        session[:user_id] = @user.id
        flash[:notice] = "ユーザー登録が完了しました"
@@ -66,14 +60,12 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
 
   def update
     @user = User.find_by(id: params[:id])
-    @user.name = params[:name]
-    @user.email = params[:email]
-    if params[:image]
-      @user.icon_image_name = "#{@user.id}.jpg"
-      image = params[:image]
-      File.binwrite("public/user_images/#{@user.image_name}", image.read)
-    end
-    if @user.save
+    user = params.require(:user).permit(
+      :name,
+      :icon_image_name,
+      :email
+    )
+    if @user.update_attributes(user)
       flash[:notice]="ユーザー情報を編集しました"
       redirect_to("/users/#{@user.id}")
     else
@@ -92,15 +84,13 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
 
   def register_designer
     @user = User.find_by(id: params[:id])
-    @user.name = params[:designer_name]
-    @user.brand_name = params[:brand_name]
-    @user.user_group = 2
-    if params[:image]
-      @user.icon_image_name = "#{@user.id}.jpg"
-      image = params[:image]
-      File.binwrite("public/user_images/#{@user.image_name}", image.read)
-    end
-    if @user.save
+    user = params.require(:user).permit(
+      :name,
+      :brand_name,
+      :icon_image_name,
+      :user_group
+    )
+    if @user.update_attributes(user)
       flash[:notice]="デザイナー登録が完了しました"
       redirect_to("/users/#{@user.id}")
     else
@@ -110,16 +100,14 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
 
   def update_designer
     @user = User.find_by(id: params[:id])
-    @user.name = params[:designer_name]
-    @user.brand_name = params[:brand_name]
-    @user.designer_profile = params[:profile]
-    @user.email = params[:email]
-    if params[:image]
-      @user.icon_image_name = "#{@user.id}.jpg"
-      image = params[:image]
-      File.binwrite("public/user_images/#{@user.image_name}", image.read)
-    end
-    if @user.save
+    user = params.require(:user).permit(
+      :name,
+      :brand_name,
+      :icon_image_name,
+      :designer_profile,
+      :email
+    )
+    if @user.update_attributes(user)
       flash[:notice]="デザイナー情報を編集しました"
       redirect_to("/users/#{@user.id}")
     else
@@ -130,7 +118,7 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
   def ensure_correct_user
     if @current_user.id != params[:id].to_i
       flash[:notice] = "権限がありません"
-      redirect_to("/posts/index")
+      redirect_to("/")
     end
   end
 

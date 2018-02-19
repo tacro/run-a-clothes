@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  mount_uploaders :image_name, ItemImageUploader
+  serialize :image_name, JSON
   validates :name, {presence: true}
   validates :image_name, {presence: true}
   validates :price, {presence: true}

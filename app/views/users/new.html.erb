@@ -8,22 +8,31 @@
                  <%= message %>
                </div>
         <% end %>
-        <%= form_tag("/users/create") do %>
-        <p>ユーザー名</p>
-        <input name="name" value="<%= @user.name %>">
-        <p>性別</p>
-        <%= select_tag 'gender[type]', options_for_select(["女性", "男性", "その他"]) %>
-        <!-- <select name="sex">
-        <option value="women" selected>女性</option>
-        <option value="men">男性</option>
-        <option value="other">その他</option>
-        </select></p> -->
-        <p>メールアドレス</p>
-        <input name="email" value="<%= @user.email %>">
-        <p>パスワード</p>
-        <input type="password" name="password">
-        <input type="submit" value="新規登録">
+
+        <%= form_for @user , :url => { :controller => :users, :action => :create } do |f| %>
+          <%= f.label("ユーザー名") %>
+          <%= f.text_field :name %>
+
+           <%= f.hidden_field :user_group, :value => 1 %>
+
+          <%= f.label("性別") %><br>
+          <%= f.select(:gender,
+            [["女性",0],
+            ["男性",1],
+            ["その他",2]],
+            :prompt => "選択してください"
+            ) %>
+          <br>
+          <%= f.label("メールアドレス") %>
+          <%= f.email_field :email %>
+
+          <%= f.label("パスワード") %>
+          <%= f.password_field :password %>
+
+          <%= f.submit("登録") %>
         <% end %>
+
+
       </div>
     </div>
   </div>

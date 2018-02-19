@@ -9,30 +9,39 @@
                    <%= message %>
                  </div>
         <% end %>
-        <%if @user.brand_name %>
-          <%= form_tag("/users/#{@user.id}/update_designer", {multipart: true}) do %>
-          <p>デザイナー(ユーザー)名</p>
-          <input name="designer_name" value="<%= @user.name %>">
-          <p>ブランド名</p>
-          <input name="brand_name" value="<%= @user.brand_name %>">
-          <p>アイコン</p>
-          <input name="image"  type="file">
-          <p>コメント</p>
-          <textarea name="profile"><%= @user.designer_profile %></textarea>
-          <p>メールアドレス</p>
-          <input name="email" value="<%= @user.email %>">
-          <input type="submit" value="保存">
+        <%if @user.brand_name? %>
+          <%= form_for @user, :url => { :controller => :users, :action => :update_designer } do |f|%>
+            <%= f.label("ユーザー名") %>
+            <%= f.text_field :name %>
+
+            <%= f.label("ブランド名") %>
+            <%= f.text_field :brand_name %>
+
+            <%= f.label("アイコン") %>
+            <%= f.file_field :icon_image_name %>
+
+            <%= f.label("プロフィール") %>
+            <%= f.text_area :designer_profile %>
+
+            <%= f.label("メールアドレス") %>
+            <%= f.email_field :email %>
+
+            <%= f.submit("保存") %>
           <% end %>
         <%else %>
-          <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
-          <p>ユーザー名</p>
-          <input name="name" value="<%= @user.name %>">
-          <p>アイコン</p>
-          <input name="image"  type="file">
-          <p>メールアドレス</p>
-          <input name="email" value="<%= @user.email %>">
-          <input type="submit" value="保存">
-          <% end %>
+        <%= form_for @user, :url => { :controller => :users, :action => :update } do |f|%>
+          <%= f.label("ユーザー名") %>
+          <%= f.text_field :name %>
+
+          <%= f.label("アイコン") %>
+          <%= f.file_field :icon_image_name %>
+
+          <%= f.label("メールアドレス") %>
+          <%= f.email_field :email %>
+
+          <%= f.submit("保存") %>
+        <% end %>
+
         <% end %>
 
       </div>

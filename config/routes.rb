@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   post 'login' => "users#login"
   post 'logout' => "users#logout"
   get 'signup_designer' => "users#new_designer"
-  post 'users/:id/register_designer' => "users#register_designer"
-  post 'users/:id/update_designer' => "users#update_designer"
+  patch 'users/:id/register_designer' => "users#register_designer"
 
   post 'users/create' => "users#create"
   get 'users/:id' => "users#show"
   get 'users/:id/edit' => "users#edit"
-  post 'users/:id/update' => "users#update"
+  patch 'users/:id/update' => "users#update"
+  patch "users/:id/update_designer" => "users#update_designer"
   get 'users/:id/likes' => "users#likes"
 
   get 'posts/index'=> "posts#index"
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get 'posts/:id' => "posts#show"
   get 'posts/:id/edit' => "posts#edit"
-  post 'posts/:id/update' => "posts#update"
+  patch 'posts/:id/update' => "posts#update"
   post 'posts/:id/destroy' => "posts#destroy"
 
   post '/likes/:post_id/create' => "likes#create"

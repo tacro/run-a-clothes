@@ -8,6 +8,21 @@
                  <%= message %>
                </div>
         <% end %>
+        
+        <%= form_for @user, url: { :controller => :users, :action => :register_designer} do |f| %>
+          <%= f.label("デザイナー(ユーザー)名") %>
+          <%= f.text_field :name %>
+
+          <%= f.hidden_field :user_group, :value => 2 %>
+
+          <%= f.label("ブランド名") %>
+          <%= f.text_field :brand_name %>
+
+          <%= f.label("アイコン") %>
+          <%= f.file_field :icon_image_name %>
+
+          <%= f.submit("登録") %>
+        <% end %>
         <%= form_tag("/users/#{@user.id}/register_designer", {multipart: true}) do %>
         <p>デザイナー(ユーザー)名</p>
         <input name="designer_name" value="<%= @user.name %>">

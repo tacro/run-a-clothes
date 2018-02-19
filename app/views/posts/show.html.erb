@@ -9,7 +9,7 @@
         <%=@post.name %>
       </div>
       <div>
-        <img src="<%= "/post_images/#{@post.image_name}" %>" class="item-image">
+        <%= image_tag @post.image_name[0].standard.url, :class => "item-image"%>
       </div>
       <div class="clear_float"></div>
       <div class="caption">
@@ -43,7 +43,11 @@
 
       <!-- designer's info -->
       <div class="post-user-name">
-        <img src="<%= "/user_images/#{@user.icon_image_name}" %>" class="user-icon">
+        <% if @user.icon_image_name %>
+      　　  <%= image_tag @user.icon_image_name.thumb.url, :class =>"user-icon" %>
+      　<% else %>
+      　　<%= image_tag("/user_images/default_icon.png", :class =>"user-icon") %>
+      　<% end %>
         <%= link_to(@user.name , "/users/#{@user.id}") %>
       </div>
       <div class="headline">
@@ -58,7 +62,11 @@
         <div class="comments">
           <!-- <div class="post-right"> -->
             <%= link_to("/users/#{comment.user.id}") do %>
-              <img src="<%= "/user_images/#{comment.user.icon_image_name}" %>" class="commentator_icon">
+              <% if comment.user.icon_image_name %>
+            　　  <%= image_tag comment.user.icon_image_name.thumb.url, :class =>"commentator_icon" %>
+            　<% else %>
+            　　<%= image_tag("/user_images/default_icon.png", :class =>"commentator_icon") %>
+            　<% end %>
             <% end %>
             <div class="commentator_name">
               <%= link_to(comment.user.name, "/users/#{comment.user.id}") %>
@@ -93,8 +101,10 @@
       <% if @post.designer_id == @current_user.id %>
       <div class="post-menus">
         <%= link_to("編集", "/posts/#{@post.id}/edit") %>
-        <%= link_to("削除", "/posts/#{@post.id}/destroy",{method: "post"}) %>
-      </div>
+        <%= link_to "削除",
+                    {:controller => "posts", :action => "destroy"},
+                    method: "post"%>
+        </div>
       <% end %>
     <% end %>
     </div>

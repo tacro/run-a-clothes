@@ -4,7 +4,7 @@
       <div class="image_index">
         <div>
           <%= link_to("/posts/#{post.id}") do %>
-             <img src="<%= "/post_images/#{post.image_name}" %>">
+             <%= image_tag post.image_name[0].standard.url %>
           <% end %>
         </div>
       </div>
