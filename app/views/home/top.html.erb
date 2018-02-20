@@ -1,13 +1,15 @@
 <div>
   <div class="container">
     <% @posts.each do |post| %>
-      <div class="image_index">
         <div>
           <%= link_to("/posts/#{post.id}") do %>
-              <%= image_tag(post.image_name[0].url(:standard) , :alt => post.id)%>
+            <% if Rails.env.development?%>
+              <%= image_tag(post.image_name[0].url(:thumb) , :alt => post.id)%>
+            <% elsif Rails.env.production? %>
+                <%= image_tag(post.image_name[0].url(:thumb) , :alt => post.id)%>
+            <% end %>
           <% end %>
         </div>
-      </div>
     <% end %>
   </div>
 </div>

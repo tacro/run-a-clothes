@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_designer
-    if @current_user.user_group == 1
+    if @current_user.user_group != 2
       flash[:notice] = "デザイナー登録が必要です"
       redirect_to("/users/#{@current_user.id}/signup_designer")
     end

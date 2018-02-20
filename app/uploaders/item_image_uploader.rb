@@ -6,11 +6,14 @@ class ItemImageUploader < CarrierWave::Uploader::Base
      include CarrierWave::RMagick
     # include CarrierWave::MiniMagick
 
-    process :convert => 'png'
-     process :tags => ['image_name']
+
+    process :convert => 'jpg'
+    if Rails.env.production?
+      process :tags => ['image_name']
+    end
 
     version :standard do
-       process :resize_and_pad=> [570, 852, background = :transparent, gravity = ::Magick::CenterGravity]
+       process :resize_and_pad=> [570, 852, background = :transparent, gravity = Magick::CenterGravity]
        #process :resize_to_fill=> [570, 852, background = :transparent, gravity = ::Magick::CenterGravity]
     end
     # Choose what kind of storage to use for this uploader:
@@ -21,7 +24,6 @@ class ItemImageUploader < CarrierWave::Uploader::Base
     # This is a sensible default for uploaders that are meant to be mounted:
     def store_dir
        "post_images/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-
     end
 
     # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -43,7 +45,7 @@ class ItemImageUploader < CarrierWave::Uploader::Base
     version :thumb do
       #process :resize_to_limit => [380, 568]
       #process :resize_and_pad=>[380, 568, background = :transparent, gravity = ::Magick::CenterGravity]
-      process :resize_to_fill=>[380, 568, background = :transparent, gravity = ::Magick::CenterGravity]
+      process :resize_to_fill=>[380, 568, gravity =  Magick::CenterGravity]
     end
 
     # Add a white list of extensions which are allowed to be uploaded.
@@ -55,12 +57,14 @@ class ItemImageUploader < CarrierWave::Uploader::Base
     # Override the filename of the uploaded files:
     # Avoid using model.id or version_name here, see uploader/store.rb for details.
     def filename
-     "#{secure_token}.png" if original_filename.present?
-   end
+     "#{secure_token}.jpg" if original_filename.present?
+    end
 
-   def public_id
-    return model.id
-  end
+    if Rails.env.production?
+     def public_id
+      return model.id
+     end
+    end
 
    protected
    def secure_token

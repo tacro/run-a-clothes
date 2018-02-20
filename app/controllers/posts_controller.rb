@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     if @post.save
       flash[:notice]="出品が完了しました"
       redirect_to("/")
+      NotificationMailer.post_email(@current_user, @post).deliver
     else
       render("posts/new")
     end

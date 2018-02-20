@@ -21,6 +21,7 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
        session[:user_id] = @user.id
        flash[:notice] = "ユーザー登録が完了しました"
        redirect_to("/")
+       NotificationMailer.signup_email(@user).deliver
      else
        render("users/new")
      end
@@ -93,6 +94,7 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
     if @user.update_attributes(user)
       flash[:notice]="デザイナー登録が完了しました"
       redirect_to("/users/#{@user.id}")
+      NotificationMailer.desginersignup_email(@user).deliver
     else
       render("users/new_designer")
     end

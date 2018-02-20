@@ -8,7 +8,7 @@
                  <%= message %>
                </div>
         <% end %>
-        
+
         <%= form_for @user, url: { :controller => :users, :action => :register_designer} do |f| %>
           <%= f.label("デザイナー(ユーザー)名") %>
           <%= f.text_field :name %>
@@ -23,15 +23,7 @@
 
           <%= f.submit("登録") %>
         <% end %>
-        <%= form_tag("/users/#{@user.id}/register_designer", {multipart: true}) do %>
-        <p>デザイナー(ユーザー)名</p>
-        <input name="designer_name" value="<%= @user.name %>">
-        <p>ブランド名</p>
-        <input name="brand_name" value="<%= @user.brand_name %>">
-        <p>アイコン</p>
-        <input name="image"  type="file">
-        <input type="submit" value="新規登録">
-        <% end %>
+      
       </div>
     </div>
   </div>

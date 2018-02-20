@@ -15,6 +15,7 @@ gem 'rmagick'
 gem 'cloudinary'
 gem 'sqlite3', group: :development
 gem 'pg', '~> 0.18', group: :production
+gem 'dotenv-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
