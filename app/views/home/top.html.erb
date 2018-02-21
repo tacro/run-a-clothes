@@ -1,11 +1,7 @@
-<div>
   <div class="container">
     <% @posts.each do |post| %>
-        <div>
           <%= link_to("/posts/#{post.id}") do %>
               <%= image_tag(post.image_name[0].url(:thumb) , :alt => post.id)%>
           <% end %>
-        </div>
-    <% end %>
+        <% end %>
   </div>
-</div>
