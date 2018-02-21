@@ -13,7 +13,7 @@ end
 def ensure_correct_user
   @comment = Comment.find_by(id: params[:id])
   @post = Post.find_by(id: @comment.post_id)
-  if @current_user.id != @comment.user_id || @current_user.id != @post.designer
+  if @current_user.id != @comment.user_id || @current_user.id != @post.designer_id
     flash[:notice] = "権限がありません"
     redirect_to("/")
   end
