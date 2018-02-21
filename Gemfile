@@ -14,8 +14,13 @@ gem 'carrierwave'
 gem 'fog'
 # to interact witrh aws
 gem 'aws-sdk', '~> 2'
+# image upload
 gem 'rmagick'
 gem 'cloudinary'
+
+# to get log for detail
+gem 'rails_12factor', group: :production
+
 gem 'sqlite3', group: :development
 gem 'pg', '~> 0.18', group: :production
 gem 'dotenv-rails'
