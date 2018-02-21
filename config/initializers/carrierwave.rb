@@ -3,7 +3,7 @@ CarrierWave.configure do |config|
     provider: 'AWS',
     aws_access_key_id: ENV['AWS_ACCESS_KEY'],
     aws_secret_access_key: ENV['AWS_SECRET_KEY'],
-    region: 'us-wast-2'
+    region: 'us-west-2'
   }
 
   config.fog_directory  = 'rac-images-heroku'
