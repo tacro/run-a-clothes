@@ -7,6 +7,6 @@ class User < ApplicationRecord
   validates :gender, {presence: true}
 
   def posts
-    return Post.where(designer_id: self.id)
+    return Post.where(designer_id: self.id).order(created_at: :desc)
   end
 end

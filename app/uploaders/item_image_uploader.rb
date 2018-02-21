@@ -32,7 +32,7 @@ class ItemImageUploader < CarrierWave::Uploader::Base
     version :thumb do
       #process :resize_to_limit => [380, 568]
       #process :resize_and_pad=>[380, 568, background = :transparent, gravity = ::Magick::CenterGravity]
-      process :resize_to_fill=>[380, 568, gravity =  Magick::CenterGravity]
+      process :resize_to_fill=>[380, 568, gravity = Magick::CenterGravity]
     end
 
     # Add a white list of extensions which are allowed to be uploaded.
