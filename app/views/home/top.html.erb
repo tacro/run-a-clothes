@@ -3,12 +3,9 @@
     <% @posts.each do |post| %>
         <div>
           <%= link_to("/posts/#{post.id}") do %>
-            <% if Rails.env.development?%>
               <%= image_tag(post.image_name[0].url(:thumb) , :alt => post.id)%>
-            <% elsif Rails.env.production? %>
-                <%= image_tag(post.image_name[0].url(:thumb) , :alt => post.id)%>
-            <% end %>
           <% end %>
+
         </div>
     <% end %>
   </div>

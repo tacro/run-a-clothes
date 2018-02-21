@@ -11,6 +11,7 @@ gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
 
 gem 'carrierwave'
+gem 'fog'
 gem 'rmagick'
 gem 'cloudinary'
 gem 'sqlite3', group: :development

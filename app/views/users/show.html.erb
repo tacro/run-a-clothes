@@ -6,6 +6,7 @@
     　<% else %>
     　　<%= image_tag("/user_images/default_icon.png") %>
     　<% end %>
+
       <h2><%=@user.name %></h2>
       <%if @user.user_group == 2%>
         <p>Brand: <%= @user.brand_name %></p>
@@ -19,6 +20,7 @@
         <% end %>
       <% end %>
     </div>
+
     <div class="clear_float"></div>
     <% if @user.brand_name %>
         <ul class="user-tabs">
