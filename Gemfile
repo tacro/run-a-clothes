@@ -12,6 +12,8 @@ gem 'rails', '~> 5.1.4'
 
 gem 'carrierwave'
 gem 'fog'
+# to interact witrh aws
+gem 'aws-sdk', '~> 2'
 gem 'rmagick'
 gem 'cloudinary'
 gem 'sqlite3', group: :development
