@@ -1,7 +1,7 @@
   <div class="container">
     <% @posts.each do |post| %>
           <%= link_to("/posts/#{post.id}") do %>
-              <%= image_tag(post.image_name[0].url(:thumb) , :alt => post.id)%>
+              <%= image_tag(post.image_name[0].url(:thumb))%>
           <% end %>
         <% end %>
   </div>
