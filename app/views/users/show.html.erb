@@ -11,7 +11,7 @@
       <%if @user.user_group == 2%>
         <p>Brand: <%= @user.brand_name %></p>
         <!-- <h2>Profile:</h2> -->
-        <p><%= @user.designer_profile %></p>
+        <p><%= simple_format(@user.designer_profile) %></p>
       <% end %>
       <%if @current_user %>
         <%if @user.id == @current_user.id %>
