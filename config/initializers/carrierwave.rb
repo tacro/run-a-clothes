@@ -1,13 +1,15 @@
-CarrierWave.configure do |config|
-  config.fog_credentials = {
-    provider: 'AWS',
-    aws_access_key_id: ENV['AWS_ACCESS_KEY'],
-    aws_secret_access_key: ENV['AWS_SECRET_KEY'],
-    region: ENV['AWS_REGION']
-  }
+if Rails.env.production?
+  CarrierWave.configure do |config|
+    config.fog_credentials = {
+      provider: 'AWS',
+      aws_access_key_id: ENV['AWS_ACCESS_KEY'],
+      aws_secret_access_key: ENV['AWS_SECRET_KEY'],
+      region: ENV['AWS_REGION']
+    }
 
-  config.cache_dir = "#{Rails.root}/tmp/uploads"
+    config.cache_dir = "#{Rails.root}/tmp/uploads"
 
-  config.fog_directory  = ENV['S3_BUCKET_NAME']
-  config.cache_storage = :fog
+    config.fog_directory  = ENV['S3_BUCKET_NAME']
+    config.cache_storage = :fog
+  end
 end
