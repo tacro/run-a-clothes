@@ -40,7 +40,7 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
     )
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:notice] = "successfully logged in"
+      flash[:notice] = "ログインしました"
       redirect_to("/users/#{@user.id}")
     else
       @email = params[:email]
@@ -51,7 +51,7 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
 
   def logout
     session[:user_id] = nil;
-    flash[:notice] = "logged out"
+    flash[:notice] = "ログアウトしました"
     redirect_to("/login")
   end
 

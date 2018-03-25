@@ -52,14 +52,14 @@
 }
 
 .posts-show-item .user-icon {
-  width: 45px;
-  height: 45px;
+  width: 42px;
+  height: 42px;
   box-shadow: 0 2px 6px #c1ced7;
   border-radius: 50%;
   vertical-align: middle;
   object-fit: cover;
   position: relative;
-  left: 3%;
+   left: 1%;
 }
 
 .posts-show-item .item-image {
@@ -78,9 +78,7 @@
 .posts-show-item .post-user-name a {
   vertical-align: middle;
   font-size: 18px;
-  margin-left: 12px;
   position: relative;
-  left: 2%;
 }
 
 .posts-show-item .headline {
@@ -165,7 +163,7 @@
   font-size: 16px;
   margin-right: 3px;
   position: relative;
-  left: 5%;;
+  left: 5%;
 }
 
 .post-menus {

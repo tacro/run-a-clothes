@@ -15,16 +15,7 @@
             <%= f.file_field :image_name, multiple: true %>
             <p>*何も選択しなかった場合、元の画像がそのまま残ります。</p>
 
-            <%= f.label("アイテム名（必須）") %>
-            <%= f.text_field :name %>
-
-            <%= f.label("価格（必須）") %>
-            <%= f.number_field :price %>
-
-            <%= f.label("アイテム詳細1（必須）") %>
-            <%= f.text_area :caption %>
-
-            <%= f.label("アイテム詳細2") %>
+            <%= f.label("コメント") %>
             <%= f.text_area :detail %>
 
             <%= f.submit("保存") %>

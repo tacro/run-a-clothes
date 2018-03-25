@@ -18,19 +18,10 @@
 
             <%= f.hidden_field :designer_id, :value => @current_user.id %>
 
-            <%= f.label("アイテム名（必須）") %>
-            <%= f.text_field :name %>
+            <%= f.label("コメント") %>
+            <%= f.text_area :detail, :placeholder => "アイテムに関するこだわりなどあれば、自由に入力してください"%>
 
-            <%= f.label("価格（必須）") %>
-            <%= f.number_field :price, :placeholder => "税抜き価格を入力してください" %>
-
-            <%= f.label("アイテム詳細1（必須）") %>
-            <%= f.text_area :caption, :placeholder => "サイズ、素材、モデルの身長や体重などを入力してください"%>
-
-            <%= f.label("アイテム詳細2") %>
-            <%= f.text_area :detail, :placeholder => "その他アイテムに関するこだわりなど、自由に入力してください"%>
-
-            <%= f.submit("出品") %>
+            <%= f.submit("投稿") %>
           <% end %>
 
       </div>
