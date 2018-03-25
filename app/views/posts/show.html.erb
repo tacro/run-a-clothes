@@ -2,27 +2,19 @@
   <!-- <div class="container"> -->
     <div class="posts-show-item">
       <!-- show information of the item -->
-      <div class="headline">
-        <%=@post.user.brand_name %>
-      </div>
-      <div class="headline">
-        <%=@post.name %>
+      <div class="post-user-name">
+        <% if @user.icon_image_name %>
+      　　  <%= image_tag @user.icon_image_name.thumb.url, :class =>"user-icon" %>
+      　<% else %>
+      　　<%= image_tag("/user_images/default_icon.png", :class =>"user-icon") %>
+      　<% end %>
+        <%= link_to(@user.name , "/users/#{@user.id}") %>
       </div>
       <div>
         <%= image_tag @post.image_name[0].standard.url, :class => "item-image"%>
       </div>
       <div class="clear_float"></div>
-      <div class="caption">
-        <%= simple_format(@post.caption) %>
-      </div>
-      <div class="headline">
-        ¥<%=@post.price%>(税抜き)
-      </div>
-      <!-- purchase button -->
       <div class="post-right">
-      <%= link_to("/checkout/confirm") do %>
-        <button class="button" type="submit">購入する</button>
-     <% end %>
      <!-- likes -->
      <%if @current_user %>
         <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
@@ -36,19 +28,13 @@
         <% end %>
       <% end %>
       <div class="fa">
-        <%= @likes_count %>
+        <%= @likes_count %> likes
       </div>
       </div>
       <div class="clear_float"></div>
-
       <!-- designer's info -->
-      <div class="post-user-name">
-        <% if @user.icon_image_name %>
-      　　  <%= image_tag @user.icon_image_name.thumb.url, :class =>"user-icon" %>
-      　<% else %>
-      　　<%= image_tag("/user_images/default_icon.png", :class =>"user-icon") %>
-      　<% end %>
-        <%= link_to(@user.name , "/users/#{@user.id}") %>
+      <div class="headline">
+        Brand : <%=@post.user.brand_name %>
       </div>
       <div class="headline">
         <%= simple_format(@post.detail) %>

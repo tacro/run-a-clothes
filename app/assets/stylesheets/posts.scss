@@ -16,26 +16,26 @@
   border-radius: 50%;
   box-shadow: 0 2px 6px #c1ced7;
   object-fit: cover;
-  float: left;
 }
 
 
 .post-user-name a {
   font-weight: 600;
+  left: -18px;
 }
 
 .post-user-name a:hover {
   color: black;
 }
 
-.post-left {
-  left: 30px;
-}
+// .post-left {
+//   left: 30px;
+// }
 
 .post-right {
   float: left;
   width: 90%;
-  padding-left: 25px;
+  //padding-left: 25px;
   text-align: left;
 }
 
@@ -45,26 +45,25 @@
 }
 
 .posts-show-item {
-  padding: 15px;
+  padding: 12px;
   background-color: white;
-  //box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
 }
 
 .posts-show-item .user-icon {
   width: 42px;
   height: 42px;
-  box-shadow: 0 2px 6px #c1ced7;
+  margin-bottom: 3px;
+  box-shadow: 0 2px 2px #c1ced7;
   border-radius: 50%;
   vertical-align: middle;
   object-fit: cover;
-  position: relative;
-   left: 1%;
+//  position: absolute;
 }
 
 .posts-show-item .item-image {
   width: 72%;
-  height: 107%;
+  height: 107%;//
   max-width: 380px;
   max-height: 568px;
   vertical-align: middle;
@@ -85,7 +84,7 @@
   font-size: 18px;
   margin: 15px 0;
   position: relative;
-  left: 5%
+  left: 13%
 }
 
 .posts-show-item .button{
@@ -98,8 +97,8 @@
         padding: 10px;
         font-size: 15px;
         position: relative;
-        left: 3%;
-        }
+        left: 13%;
+  }
 
 .posts-show-item .caption {
   float: right;
@@ -113,8 +112,8 @@
 
 .comments{
   font-size: 16px;
-  box-shadow: 0 2px 6px #c1ced7;
-  padding: 20px 30px;
+  //box-shadow: 0 2px 6px #c1ced7;
+  padding: 20px 50px;
   background-color: white;
   overflow: hidden;
 }
@@ -139,35 +138,37 @@
     padding: 10px 10px 10px 0px;
     resize: none;
     position: relative;
-    left: 3%;
+    left: 13%;
 }
 
 .post-time {
   color: #8899a6;
   margin-bottom: 10px;
+  left: 5%;
 }
 
 .like-btn {
   color: #8899a6;
   position: relative;
-  left: 15%;
+  left: 16%;
 }
 
 .like-btn-unlike {
   color: #ff2581;
   position: relative;
-  left: 15%;
+  left: 16%;
 }
 
 .posts-show-item .fa {
   font-size: 16px;
   margin-right: 3px;
   position: relative;
-  left: 5%;
+  left: 16%;
 }
 
 .post-menus {
   float: right;
+  position: relative;
 }
 
 .post-menus a, .post-menus input {
