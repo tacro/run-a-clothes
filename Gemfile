@@ -21,6 +21,9 @@ gem 'cloudinary'
 # to get log for detail
 gem 'rails_12factor', group: :production
 
+# to use jQuery
+gem 'jquery-rails'
+
 gem 'sqlite3', group: :development
 gem 'pg', '~> 0.18', group: :production
 gem 'dotenv-rails'

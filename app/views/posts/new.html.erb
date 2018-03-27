@@ -1,31 +1,43 @@
 <div class="main posts-new">
   <div class="container">
 
-  <h1 class="form-heading">アイテム出品</h1>
+  <h1 class="form-heading">新規投稿</h1>
 
-    <div class="form">
-      <div class="form-body">
+    <form>
+        <div class="form">
+          <div class="form-body">
 
-          <% @post.errors.full_messages.each do |message| %>
-            <div class="form-error">
-              <%= message %>
-            </div>
-          <% end %>
+              <% @post.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                  <%= message %>
+                </div>
+              <% end %>
 
-          <%= form_for @post, :url => { :controller => :posts, :action => :create } do |f|%>
-            <%= f.label("アイテム画像（必須）") %>
-            <%= f.file_field :image_name, multiple: true %>
+              <%= form_for @post, :url => { :controller => :posts, :action => :create } do |f|%>
+                <%= f.label("アイテム画像（必須）") %>
+                <%= f.file_field :image_name, multiple: true , :id => "upload"%>
+                <%= f.hidden_field :image_x %>
+                <%= f.hidden_field :image_y %>
+                <%= f.hidden_field :image_w %>
+                <%= f.hidden_field :image_h %>
+                <div class="preview"><img id="crop_img" /></div>
+                <div class="clear_float"></div>
 
-            <%= f.hidden_field :designer_id, :value => @current_user.id %>
+                <%= f.hidden_field :designer_id, :value => @current_user.id %>
+                <div class="clear_float"></div>
 
-            <%= f.label("コメント") %>
-            <%= f.text_area :detail, :placeholder => "アイテムに関するこだわりなどあれば、自由に入力してください"%>
+                <%= f.label("コメント") %>
+                <%= f.text_area :detail, :placeholder => "アイテムに関するこだわりなどあれば、自由に入力してください"%>
 
-            <%= f.submit("投稿") %>
-          <% end %>
+                <%= f.submit("投稿", :id => "submit")  %>
+              <% end %>
 
-      </div>
-    </div>
-
+          </div>
+        </div>
+    </form>
   </div>
+
+  <%= stylesheet_link_tag    'cropper.min.css' %>
+  <%= javascript_include_tag 'cropper.min.js' %>
+  <%= javascript_include_tag 'crop_image.js' %>
 </div>

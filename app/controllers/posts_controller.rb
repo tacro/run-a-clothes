@@ -17,16 +17,25 @@ class PostsController < ApplicationController
 
   def create
     post = params.require(:post).permit(
-      :name,
+      # :name,
       :designer_id,
       {image_name: []},
-      :price,
-      :caption,
+      :image_x,
+      :image_y,
+      :image_w,
+      :image_h,
+      # :remote_image_url,
+      # :price,
+      # :caption,
       :detail
     )
+    # tmp_post_params = post_params
+    # image_data = base64_conversion(tmp_post_params[:remote_image_url])
+    # tmp_post_params[:image_name] = image_data
+    # tmp_post_params[:remote_image_url] = nil
     @post = Post.new(post)
     if @post.save
-      flash[:notice]="出品が完了しました"
+      flash[:notice]="投稿しました"
       redirect_to("/")
       NotificationMailer.post_email(@current_user, @post).deliver
     else
@@ -48,10 +57,10 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by(id: params[:id])
     post = params.require(:post).permit(
-      :name,
+      # :name,
       {image_name: []},
-      :price,
-      :caption,
+      # :price,
+      # :caption,
       :detail
     )
     if @post.update_attributes(post)

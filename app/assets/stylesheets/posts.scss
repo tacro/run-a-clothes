@@ -186,6 +186,13 @@
   resize: none;
 }
 
+.posts-new .preview {
+    display: block;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+  }
+
 .posts-new textarea::-webkit-input-placeholder {
   font-size: 12px;
   opacity: 0.5;
