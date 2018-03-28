@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    flash[:notice]="kitade"
     post = params.require(:post).permit(
       # :name,
       :designer_id,

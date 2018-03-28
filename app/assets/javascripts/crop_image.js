@@ -29,9 +29,9 @@
     reader.readAsDataURL(file);
   });
 
-  $('#submit').on('click', function(){
+  $('#_submit').on('click', function(){
     // alert("clecked!");
-    //var _form = $("#create_posts");
+    // var _form = $("#create_posts");
    // crop のデータを取得
    var data = $('#crop_img').cropper('getData');
   // console.error("error in click");
@@ -43,7 +43,9 @@
 
    // $("#post_image_name").val(""); //画像データを二重に送信するのを防ぐ
    // $("#post_remote_image_url").val(data);
-   alert("submitted!");
-   $("create_posts").submit();
+   // $("create_posts").submit();
    // _form.submit();
+   $("#myform").submit();
+   alert("submitted!");
+
 });

@@ -16,6 +16,7 @@ gem 'fog'
 gem 'aws-sdk', '~> 2'
 # image upload
 gem 'rmagick'
+gem 'mini_magick'
 gem 'cloudinary'
 
 # to get log for detail

@@ -13,7 +13,7 @@
                 </div>
               <% end %>
 
-              <%= form_for @post, :url => { :controller => :posts, :action => :create } do |f|%>
+              <%= form_for @post, html: {id:"myform"},:url => { :controller => :posts, :action => :create } do |f|%>
                 <%= f.label("アイテム画像（必須）") %>
                 <%= f.file_field :image_name, multiple: true , :id => "upload"%>
                 <%= f.hidden_field :image_x %>
@@ -29,7 +29,7 @@
                 <%= f.label("コメント") %>
                 <%= f.text_area :detail, :placeholder => "アイテムに関するこだわりなどあれば、自由に入力してください"%>
 
-                <%= f.submit("投稿", :id => "submit")  %>
+                <%= f.submit("投稿", :id => "_submit")  %>
               <% end %>
 
           </div>

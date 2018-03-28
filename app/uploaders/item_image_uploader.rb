@@ -4,7 +4,7 @@ class ItemImageUploader < CarrierWave::Uploader::Base
     #   include Cloudinary::CarrierWave
     # end
      include CarrierWave::RMagick
-    # include CarrierWave::MiniMagick
+     include CarrierWave::MiniMagick
 
 
     process :convert => 'jpg'
