@@ -26,3 +26,6 @@
 /.env
 
 # Ignore local item-image and user-avatars
+/public/post_images/
+/public/uploads/
+/public/user_images/user/
