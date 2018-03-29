@@ -24,3 +24,5 @@
 
 # environmental variables
 /.env
+
+# Ignore local item-image and user-avatars
