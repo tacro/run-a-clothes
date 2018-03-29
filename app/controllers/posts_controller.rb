@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   def new
     if @current_user.user_group != 2
-      flash[:notice]="投稿するにはデザイナー登録が必要です"
+      flash[:notice]="最初の投稿時には、デザイナー情報の入力をお願いします"
       redirect_to("/users/#{@current_user.id}/signup_designer")
     end
     @post = Post.new
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     if @post.save
       flash[:notice]="投稿しました"
       redirect_to("/")
-      NotificationMailer.post_email(@current_user, @post).deliver
+      # NotificationMailer.post_email(@current_user, @post).deliver
     else
       render("posts/new")
     end
