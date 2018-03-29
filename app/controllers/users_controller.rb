@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-before_action :authenticate_user, {only: [:logout,:edit,:update, :register_designer, :update_designer]}
-before_action :ensure_correct_user, {only: [:edit, :update]}
+before_action :authenticate_user, {only: [:logout,:edit,:update, :register_designer, :update_designer, :following_posts]}
+before_action :ensure_correct_user, {only: [:edit, :update, :following_posts]}
 before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
 before_action :forbid_login_designer, {only: [:new_designer, :register_designer]}
 
