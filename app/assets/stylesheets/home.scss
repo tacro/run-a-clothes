@@ -83,6 +83,21 @@ header {
   width: 100%;
 }
 
+.header-menus .user-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 3px;
+  border-radius: 50%;
+  vertical-align: middle;
+background-color: white;
+}
+
+.header-menus .icon {
+  margin: 5px 5px;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
 .header-logo {
   float: left;
   padding-left: 20px;
@@ -104,7 +119,7 @@ header {
 .header-menus li {
   float: left;
   line-height: 64px;
-  font-size: 13px;
+  font-size: 16px;
   color: white;
   padding-left: 15px;
 }

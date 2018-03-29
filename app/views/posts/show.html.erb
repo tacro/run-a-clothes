@@ -32,10 +32,7 @@
       </div>
       </div>
       <div class="clear_float"></div>
-      <!-- designer's info -->
-      <div class="headline">
-        Brand : <%=@post.user.brand_name %>
-      </div>
+
       <div class="headline">
         <%= simple_format(@post.detail) %>
       </div>
@@ -57,7 +54,6 @@
             <div class="commentator_name">
               <%= link_to(comment.user.name, "/users/#{comment.user.id}") %>
             </div>
-            <div class="clear_float"></div>
             <!-- <div class="post-left"> -->
               <%= simple_format(comment.comment) %>
             <!-- </div> -->

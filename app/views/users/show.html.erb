@@ -10,14 +10,14 @@
       <%= render 'follow_form' %>
 　　　 <%= render 'stats' %>
       <%if @user.user_group == 2%>
-        <p>Brand: <%= @user.brand_name %></p>
+        <p><%= @user.brand_name %></p>
         <!-- <h2>Profile:</h2> -->
         <p><%= simple_format(@user.designer_profile) %></p>
       <% end %>
       <%if @current_user %>
         <%if @user.id == @current_user.id %>
           <p><%= @user.email %></p>
-          <%=  link_to( "編集", "/users/#{@user.id}/edit") %>
+          <%=  link_to( "プロフィール設定", "/users/#{@user.id}/edit") %>
         <% end %>
       <% end %>
     </div>
@@ -42,4 +42,9 @@
        </ul>
      <% end %>
   </div>
+  <%if @current_user %>
+    <%if @user.id == @current_user.id %>
+      <%= link_to( "ログアウト" ,"/logout" , {method: "post"}) %>
+    <% end %>
+  <% end %>
 </div>

@@ -1,9 +1,18 @@
-<% @user.followers.each do |user| %>
-<table>
-<tr>
- <td>  <%= user.username %> </td>
- <td><%= link_to '詳細', user_path(user) %></td>
-</tr>
-
-</table>
-<% end %>
+<div class="main users-index">
+  <div class="container">
+    <% @user.followers.each do |user| %>
+      <div class="users-index-item">
+        <div class="user-left">
+          <% if @user.icon_image_name %>
+        　　  <%= image_tag @user.icon_image_name.thumb.url %>
+        　<% else %>
+        　　<%= image_tag("/user_images/default_icon.png") %>
+        　<% end %>
+        </div>
+        <div class="user-right">
+          <%= link_to(user.name, "/users/#{user.id}") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

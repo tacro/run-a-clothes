@@ -9,7 +9,7 @@
                    <%= message %>
                  </div>
         <% end %>
-        <%if @user.brand_name? %>
+        <%if @user.user_group == 2 %>
           <%= form_for @user, :url => { :controller => :users, :action => :update_designer } do |f|%>
             <%= f.label("ユーザー名") %>
             <%= f.text_field :name %>

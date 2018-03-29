@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   patch 'users/:id/update' => "users#update"
   patch "users/:id/update_designer" => "users#update_designer"
   get 'users/:id/likes' => "users#likes"
+  get 'users/:id/timeline' => "users#following_posts"
 
   get 'posts/index'=> "posts#index"
   get 'posts/new' => "posts#new"

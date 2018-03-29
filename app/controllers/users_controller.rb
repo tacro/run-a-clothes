@@ -137,4 +137,13 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
     render 'show_follower'
   end
 
+  def following_posts
+      @user  = User.find(params[:id])
+      @users = @user.followings
+      @user.followings.each do |user|
+        @designer = User.find_by(id: user.id)
+        @posts = Post.where(designer_id: user.id)
+      end
+  end
+
 end

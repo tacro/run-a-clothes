@@ -18,14 +18,20 @@
       </div>
       <ul class="header-menus">
         <% if @current_user %>
-            <li>
-              <%= link_to("投稿","/posts/new") %>
+            <li class="icon">
+              <%= link_to("/users/#{@current_user.id}/timeline") do %>
+              <span class="fas fa-home fa-2x"></span> HOME
+              <% end %>
+            </li>
+            <li class="icon">
+              <%= link_to("/posts/new") do%>
+              <span class="far fa-plus-square fa-2x"></span> POST
+              <% end %>
             </li>
             <li>
-              <%= link_to( "マイページ" ,"/users/#{@current_user.id}") %>
-            </li>
-            <li>
-              <%= link_to( "ログアウト" ,"/logout" , {method: "post"}) %>
+              <%= link_to( "/users/#{@current_user.id}") do %>
+              <%= image_tag @current_user.icon_image_name.thumb.url, :class =>"user-icon" %>
+              <% end %>
             </li>
         <% else %>
         <li>

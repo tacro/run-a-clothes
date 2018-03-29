@@ -1,10 +1,9 @@
-
 <div class="main posts-index">
   <div class="container">
     <% @posts.each do |post| %>
       <div class="posts-index-item">
         <div class="post-left">
-         <%= image_tag post.user.icon_image_name[0].thumb.url %>
+         <%= image_tag post.user.icon_image_name.thumb.url %>
         </div>
         <div class="post-right">
           <div class="post-user-name">
