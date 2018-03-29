@@ -32,7 +32,7 @@
         <% @user.posts.each do |post| %>
          <div class="image_index">
            <%= link_to("/posts/#{post.id}") do %>
-              <%= image_tag post.image_name[0].thumb.url %>
+              <%= image_tag post.image_name.thumb.url %>
            <% end %>
          </div>
        <% end %>
