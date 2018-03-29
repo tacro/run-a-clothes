@@ -54,10 +54,9 @@
             <div class="commentator_name">
               <%= link_to(comment.user.name, "/users/#{comment.user.id}") %>
             </div>
-            <!-- <div class="post-left"> -->
+              <div class="comment_content">
               <%= simple_format(comment.comment) %>
-            <!-- </div> -->
-          <!-- </div> -->
+            </div>
         <%if @current_user %>
           <% if comment.user_id == @current_user.id || @post.designer_id == @current_user.id %>
           <div class="post-menus">
@@ -68,7 +67,7 @@
         </div>
       <% end %>
       <%= form_tag("/posts/#{@post.id}/comment") do %>
-      <div class="comment_content">
+      <div class="comment_area">
         <textarea name="comment"></textarea>
       </div>
       <button type="submit" class="button">コメントする</button>

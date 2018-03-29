@@ -67,7 +67,7 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
       :email
     )
     if @user.update_attributes(user)
-      flash[:notice]="ユーザー情報を編集しました"
+      flash[:notice]="プロフィールを変更しました"
       redirect_to("/users/#{@user.id}")
     else
       render("users/edit")
@@ -110,7 +110,7 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
       :email
     )
     if @user.update_attributes(user)
-      flash[:notice]="デザイナー情報を編集しました"
+      flash[:notice]="プロフィールを変更しました"
       redirect_to("/users/#{@user.id}")
     else
       render("users/edit")
@@ -140,9 +140,14 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
   def following_posts
       @user  = User.find(params[:id])
       @users = @user.followings
-      @user.followings.each do |user|
-        @designer = User.find_by(id: user.id)
-        @posts = Post.where(designer_id: user.id)
+      if @users.present?
+        @users.each do |user|
+          @designer = User.find_by(id: user.id)
+          @posts = Post.where(designer_id: user.id)
+        end
+      else
+        flash[:notice]="まだタイムラインに投稿がありません…"
+        redirect_to("/")
       end
   end
 

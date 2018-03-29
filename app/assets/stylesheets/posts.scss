@@ -137,7 +137,14 @@
 
 .comment_content{
     font-size: 12px;
-    padding: 10px 10px 10px 0px;
+    padding: 5px 5px 5px 0px;
+    resize: none;
+    position: relative;
+    left: 13%;
+}
+
+.comment_area{
+    font-size: 12px;
     resize: none;
     position: relative;
     left: 13%;
