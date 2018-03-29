@@ -11,6 +11,9 @@ gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
 
 gem 'carrierwave'
+gem 'carrierwave-base64'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+# gem 'carrierwave-data-uri'
 gem 'fog'
 # to interact witrh aws
 gem 'aws-sdk', '~> 2'

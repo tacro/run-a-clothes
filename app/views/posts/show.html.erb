@@ -11,7 +11,7 @@
         <%= link_to(@user.name , "/users/#{@user.id}") %>
       </div>
       <div>
-        <%= image_tag @post.image_name[0].standard.url, :class => "item-image"%>
+        <%= image_tag @post.image_name.standard.url, :class => "item-image"%>
       </div>
       <div class="clear_float"></div>
       <div class="post-right">

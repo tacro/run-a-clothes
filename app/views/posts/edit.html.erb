@@ -9,12 +9,13 @@
               <%= message %>
             </div>
           <% end %>
-
+          <div class="posts-show-item">
+            <%= image_tag @post.image_name.standard.url, :class => "item-image"%>
+          </div>
+            <div class="clear_float"></div>
           <%= form_for @post, :url => { :controller => :posts, :action => :update } do |f|%>
-            <p><%= f.label("アイテム画像（必須）") %></p>
-            <%= f.file_field :image_name, multiple: true %>
-            <p>*何も選択しなかった場合、元の画像がそのまま残ります。</p>
 
+            <%= f.hidden_field :image_name, :value => @post.image_name %>
             <%= f.label("コメント") %>
             <%= f.text_area :detail %>
 

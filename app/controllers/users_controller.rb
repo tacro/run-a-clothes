@@ -124,4 +124,17 @@ before_action :forbid_login_designer, {only: [:new_designer, :register_designer]
     end
   end
 
+  #follow-related functions
+  def following
+      @user  = User.find(params[:id])
+      @users = @user.followings
+      render 'show_follow'
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
+  end
+
 end

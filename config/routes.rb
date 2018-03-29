@@ -33,6 +33,13 @@ Rails.application.routes.draw do
   get '/' => "home#top"
   get "about" => "home#about"
 
+  resources :users do
+    member do
+     get :following, :followers
+    end
+  end
+  resources :relationships,  only: [:create, :destroy]
+
   get "/checkout/confirm" => "checkout#confirm"
   post "checkout/pay" => "checkout#pay"
 

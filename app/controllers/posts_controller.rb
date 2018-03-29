@@ -9,31 +9,25 @@ class PostsController < ApplicationController
 
   def new
     if @current_user.user_group != 2
-      flash[:notice]="出品にはデザイナー登録が必要です"
+      flash[:notice]="投稿するにはデザイナー登録が必要です"
       redirect_to("/users/#{@current_user.id}/signup_designer")
     end
     @post = Post.new
   end
 
   def create
-    flash[:notice]="kitade"
     post = params.require(:post).permit(
       # :name,
       :designer_id,
-      {image_name: []},
-      :image_x,
-      :image_y,
-      :image_w,
-      :image_h,
-      # :remote_image_url,
+      # {image_name: []},
+      :image_name,
+      :remote_image_url,
       # :price,
       # :caption,
       :detail
     )
-    # tmp_post_params = post_params
-    # image_data = base64_conversion(tmp_post_params[:remote_image_url])
-    # tmp_post_params[:image_name] = image_data
-    # tmp_post_params[:remote_image_url] = nil
+    post[:image_name]= post[:remote_image_url]
+    post[:remote_image_url] = ""
     @post = Post.new(post)
     if @post.save
       flash[:notice]="投稿しました"
@@ -59,7 +53,10 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     post = params.require(:post).permit(
       # :name,
-      {image_name: []},
+      :designer_id,
+      # {image_name: []},
+      :image_name,
+      :remote_image_url,
       # :price,
       # :caption,
       :detail
@@ -101,6 +98,5 @@ class PostsController < ApplicationController
     @comment.save
     redirect_to :action => "show", :id => @comment.post_id
   end
-
 
 end

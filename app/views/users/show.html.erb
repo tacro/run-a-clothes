@@ -6,8 +6,9 @@
     　<% else %>
     　　<%= image_tag("/user_images/default_icon.png") %>
     　<% end %>
-
       <h2><%=@user.name %></h2>
+      <%= render 'follow_form' %>
+　　　 <%= render 'stats' %>
       <%if @user.user_group == 2%>
         <p>Brand: <%= @user.brand_name %></p>
         <!-- <h2>Profile:</h2> -->

@@ -30,22 +30,10 @@
   });
 
   $('#_submit').on('click', function(){
-    // alert("clecked!");
-    // var _form = $("#create_posts");
    // crop のデータを取得
-   var data = $('#crop_img').cropper('getData');
-  // console.error("error in click");
-  console.log(data.x);
-  $("#post_image_x").val(Math.round(data.x));
-  $("#post_image_y").val(Math.round(data.y));
-  $("#post_image_w").val(Math.round(data.width));
-  $("#post_image_h").val(Math.round(data.height));
-
-   // $("#post_image_name").val(""); //画像データを二重に送信するのを防ぐ
-   // $("#post_remote_image_url").val(data);
-   // $("create_posts").submit();
-   // _form.submit();
+   var canvas = $('#crop_img').cropper('getCroppedCanvas');
+   var canvas_data = canvas.toDataURL();
+   $("#post_image_name").val(""); //画像データを二重に送信するのを防ぐ
+   $("#post_remote_image_url").val(canvas_data);
    $("#myform").submit();
-   alert("submitted!");
-
 });
