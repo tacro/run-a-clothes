@@ -1,5 +1,5 @@
 class NotificationMailer < ApplicationMailer
-  default from: ENV[USER_NAME_GANDI]
+  default from: ENV['USER_NAME_GANDI']
 
   def signup_email(user)
     @username = user.name
