@@ -67,7 +67,7 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
   	address:               'mail.gandi.net',
-  	port:      	           465,
+  	port:      	           587,
   	domain:                ENV['DOMAIN'],
   	user_name:             ENV['USER_NAME_GANDI'],
   	password:              ENV['PASSWORD_GANDI'],
