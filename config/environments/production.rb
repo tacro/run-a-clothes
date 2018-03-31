@@ -64,12 +64,22 @@ Rails.application.configure do
 
   # SMTP Settings
   config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  # 	address:               'smtp.gmail.com',
+  # 	port:      	           587,
+  # 	domain:                'heroku.com',
+  # 	user_name:             ENV['USER_NAME_GMAIL'],
+  # 	password:              ENV['PASSWORD_GMAIL'],
+  # 	authentication:        'plain',
+  # 	enable_starttls_auto:  true
+  # }
+
   config.action_mailer.smtp_settings = {
-  	address:               'smtp.gmail.com',
+  	address:               'mail.gandi.net',
   	port:      	           587,
-  	domain:                'heroku.com',
-  	user_name:             ENV['USER_NAME_GMAIL'],
-  	password:              ENV['PASSWORD_GMAIL'],
+  	domain:                ENV['DOMAIN'],
+  	user_name:             ENV['USER_NAME_GANDI'],
+  	password:              ENV['PASSWORD_GANDI'],
   	authentication:        'plain',
   	enable_starttls_auto:  true
   }
