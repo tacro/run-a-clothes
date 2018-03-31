@@ -31,3 +31,18 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    attributes:
+      user:
+        name: name
+        password: password
+        password_confirmation: password confirmation
+        email: email
+        current_password: current password
+        new_password: new password
+        forgot_password: forgot password?
+        confirm_instructions: Didn't receive confirmation instructions?
+        unlock_instructions: Didn't receive unlock instructions?
+        sign_up: Sign up
+        log_in: Log in

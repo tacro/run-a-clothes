@@ -1,6 +1,6 @@
 <div class="main users-edit">
   <div class="container">
-    <div class="form-heading">ユーザー情報の編集</div>
+    <div class="form-heading">Edit Profile</div>
     <div class="form users-form">
       <div class="form-body">
 
@@ -9,41 +9,21 @@
                    <%= message %>
                  </div>
         <% end %>
-        <%if @user.user_group == 2 %>
-          <%= form_for @user, :url => { :controller => :users, :action => :update_designer } do |f|%>
-            <%= f.label("ユーザー名") %>
-            <%= f.text_field :name %>
-
-            <%= f.label("ブランド名") %>
-            <%= f.text_field :brand_name %>
-
-            <%= f.label("アイコン") %>
-            <%= f.file_field :icon_image_name %>
-
-            <%= f.label("プロフィール") %>
-            <%= f.text_area :designer_profile %>
-
-            <%= f.label("メールアドレス") %>
-            <%= f.email_field :email %>
-
-            <%= f.submit("保存") %>
-          <% end %>
-        <%else %>
-        <%= form_for @user, :url => { :controller => :users, :action => :update } do |f|%>
+        <div class="field" >
+          <%= form_for @user, :url => { :controller => :users, :action => :update } do |f|%>
           <%= f.label("ユーザー名") %>
-          <%= f.text_field :name %>
+          <%= f.text_field :username %>
 
           <%= f.label("アイコン") %>
-          <%= f.file_field :icon_image_name %>
+          <%= f.file_field :avatar %>
 
-          <%= f.label("メールアドレス") %>
-          <%= f.email_field :email %>
+          <%= f.label("プロフィール") %>
+          <%= f.text_area :profile %>
 
           <%= f.submit("保存") %>
-        <% end %>
 
         <% end %>
-
+        </div>
       </div>
     </div>
   </div>

@@ -3,12 +3,12 @@
     <div class="posts-show-item">
       <!-- show information of the item -->
       <div class="post-user-name">
-        <% if @user.icon_image_name %>
-      　　  <%= image_tag @user.icon_image_name.thumb.url, :class =>"user-icon" %>
+        <% if @user.avatar %>
+      　　  <%= image_tag @user.avatar.thumb.url, :class =>"user-icon" %>
       　<% else %>
       　　<%= image_tag("/user_images/default_icon.png", :class =>"user-icon") %>
       　<% end %>
-        <%= link_to(@user.name , "/users/#{@user.id}") %>
+        <%= link_to(@user.username , "/users/#{@user.id}") %>
       </div>
       <div>
         <%= image_tag @post.image_name.standard.url, :class => "item-image"%>
@@ -16,8 +16,8 @@
       <div class="clear_float"></div>
       <div class="post-right">
      <!-- likes -->
-     <%if @current_user %>
-        <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+     <%if current_user %>
+        <% if Like.find_by(user_id: current_user.id, post_id: @post.id) %>
            <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %>
             <span class="fas fa-heart like-btn-unlike"></span>
            <% end %>
@@ -47,20 +47,20 @@
         <div class="comments">
           <!-- <div class="post-right"> -->
             <%= link_to("/users/#{comment.user.id}") do %>
-              <% if comment.user.icon_image_name %>
-            　　  <%= image_tag comment.user.icon_image_name.thumb.url, :class =>"commentator_icon" %>
+              <% if comment.user.avatar %>
+            　　  <%= image_tag comment.user.avatar.thumb.url, :class =>"commentator_icon" %>
             　<% else %>
             　　<%= image_tag("/user_images/default_icon.png", :class =>"commentator_icon") %>
             　<% end %>
             <% end %>
             <div class="commentator_name">
-              <%= link_to(comment.user.name, "/users/#{comment.user.id}") %>
+              <%= link_to(comment.user.username, "/users/#{comment.user.id}") %>
             </div>
               <div class="comment_content">
               <%= simple_format(comment.comment) %>
             </div>
-        <%if @current_user %>
-          <% if comment.user_id == @current_user.id || @post.designer_id == @current_user.id %>
+        <%if current_user %>
+          <% if comment.user_id == current_user.id || @post.designer_id == current_user.id %>
           <div class="post-menus">
             <%= link_to("削除", "/comments/#{comment.id}/destroy",{method: "post"}) %>
           </div>
@@ -80,8 +80,8 @@
       </div>
 
     <!-- link to edit and destroy -->
-    <%if @current_user %>
-      <% if @post.designer_id == @current_user.id %>
+    <%if current_user %>
+      <% if @post.designer_id == current_user.id %>
       <div class="post-menus">
         <%= link_to("編集", "/posts/#{@post.id}/edit") %>
         <%= link_to "削除",

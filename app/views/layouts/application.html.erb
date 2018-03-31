@@ -17,9 +17,9 @@
           <%= link_to("ラナクロ", "/") %>
       </div>
       <ul class="header-menus">
-        <% if @current_user %>
+        <% if user_signed_in? %>
             <li class="icon">
-              <%= link_to("/users/#{@current_user.id}/timeline") do %>
+              <%= link_to("/users/#{current_user.id}/timeline") do %>
               <span class="fas fa-home fa-2x"></span> HOME
               <% end %>
             </li>
@@ -29,8 +29,8 @@
               <% end %>
             </li>
             <li>
-              <%= link_to( "/users/#{@current_user.id}") do %>
-              <%= image_tag @current_user.icon_image_name.thumb.url, :class =>"user-icon" %>
+              <%= link_to("/users/#{current_user.id}") do %>
+              <%= image_tag current_user.avatar.thumb.url, :class =>"user-icon" %>
               <% end %>
             </li>
         <% else %>
@@ -38,10 +38,10 @@
           <%= link_to("About","/about") %>
         </li>
           <li>
-            <%= link_to("登録","/signup") %>
+            <%= link_to("登録", new_user_registration_path) %>
           </li>
           <li>
-            <%= link_to("ログイン","/login") %>
+            <%= link_to("ログイン",new_user_session_path) %>
           </li>
         <% end %>
       </ul>
@@ -50,6 +50,13 @@
         <div class="flash">
           <%= flash[:notice] %>
         </div>
+      <% end %>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <% if flash[:alert].present? %>
+        <%= flash[:alert] %>
       <% end %>
 
       <%= yield %>

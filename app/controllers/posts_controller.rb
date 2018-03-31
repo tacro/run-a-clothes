@@ -1,17 +1,13 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user, {only: [:comment]}
+  before_action :authenticate_user!, {only: [:comment]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
-  before_action :authenticate_designer, {only: [:new, :create, :edit, :update, :destroy]}
+  # before_action :authenticate_designer, {only: [:new, :create, :edit, :update, :destroy]}
 
   def index
     @posts = Post.all.order(created_at: :desc)
   end
 
   def new
-    if @current_user.user_group != 2
-      flash[:notice]="最初の投稿時には、デザイナー情報の入力をお願いします"
-      redirect_to("/users/#{@current_user.id}/signup_designer")
-    end
     @post = Post.new
   end
 
@@ -32,7 +28,7 @@ class PostsController < ApplicationController
     if @post.save
       flash[:notice]="投稿しました"
       redirect_to("/")
-      # NotificationMailer.post_email(@current_user, @post).deliver
+      # NotificationMailer.post_email(current_user, @post).deliver
     else
       render("posts/new")
     end
@@ -79,12 +75,12 @@ class PostsController < ApplicationController
         end
     end
     flash[:notice] = "投稿を削除しました"
-    redirect_to("/users/#{@current_user.id}")
+    redirect_to("/users/#{current_user.id}")
   end
 
   def ensure_correct_user
     @post = Post.find_by(id: params[:id])
-    if @current_user.id != @post.designer_id
+    if current_user.id != @post.designer_id
       flash[:notice] = "権限がありません"
       redirect_to("/posts/#{@post.id}")
     end
@@ -94,7 +90,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @comment = Comment.new(comment: params[:comment],
                           post_id: @post.id,
-                          user_id: @current_user.id)
+                          user_id: current_user.id)
     @comment.save
     redirect_to :action => "show", :id => @comment.post_id
   end

@@ -13,6 +13,7 @@
           <% end %>
 
           <%= form_for @post, html: {id:"myform"}, :url => { :controller => :posts, :action => :create } do |f|%>
+          <div class="field" >
             <%= f.label("アイテム画像（必須）") %>
             <%= f.file_field :image_name,  :id => "upload"%>
 
@@ -21,7 +22,7 @@
             <div class="preview"><img id="crop_img" /></div>
             <div class="clear_float"></div>
 
-            <%= f.hidden_field :designer_id, :value => @current_user.id %>
+            <%= f.hidden_field :designer_id, :value => current_user.id %>
             <div class="clear_float"></div>
 
             <%= f.label("コメント") %>
@@ -29,7 +30,7 @@
 
             <%= f.submit("投稿", :id => "_submit")  %>
           <% end %>
-
+        </div>
       </div>
     </div>
 

@@ -9,6 +9,7 @@
               <%= message %>
             </div>
           <% end %>
+        <div class="field" >
           <div class="posts-show-item">
             <%= image_tag @post.image_name.standard.url, :class => "item-image"%>
           </div>
@@ -21,8 +22,7 @@
 
             <%= f.submit("保存") %>
           <% end %>
-
-
+        </div>
       </div>
     </div>
   </div>

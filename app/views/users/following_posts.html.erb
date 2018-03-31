@@ -3,12 +3,12 @@
     <% if @posts.present? %>
       <% @posts.each do |post| %>
         <div class="post-user-name">
-          <% if @designer.icon_image_name %>
-        　　  <%= image_tag @designer.icon_image_name.thumb.url, :class =>"user-icon" %>
+          <% if @designer.avatar %>
+        　　  <%= image_tag @designer.avatar.thumb.url, :class =>"user-icon" %>
         　<% else %>
         　　<%= image_tag("/user_images/default_icon.png", :class =>"user-icon") %>
         　<% end %>
-          <%= link_to(@designer.name , "/users/#{@designer.id}") %>
+          <%= link_to(@designer.username , "/users/#{@designer.id}") %>
         </div>
         <div>
           <%= link_to("/posts/#{post.id}") do %>
@@ -18,8 +18,8 @@
         <div class="clear_float"></div>
         <div class="post-right">
        <!-- likes -->
-       <%if @current_user %>
-          <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+       <%if current_user %>
+          <% if Like.find_by(user_id: current_user.id, post_id: post.id) %>
              <%= link_to("/likes/#{post.id}/destroy", {method: "post"}) do %>
               <span class="fas fa-heart like-btn-unlike"></span>
              <% end %>

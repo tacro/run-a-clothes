@@ -1,20 +1,15 @@
 Rails.application.routes.draw do
-  get 'checkout/confirm'
 
-  get 'signup' => "users#new"
-  get 'login' => "users#login_form"
-  post 'login' => "users#login"
-  post 'logout' => "users#logout"
-  get 'users/:id/signup_designer' => "users#new_designer"
-  patch 'users/:id/register_designer' => "users#register_designer"
+  root 'home#top'
+  devise_for :users, :controllers => {
+     :omniauth_callbacks => "omniauth_callbacks"
+   }
 
-  post 'users/create' => "users#create"
   get 'users/:id' => "users#show"
-  get 'users/:id/edit' => "users#edit"
-  patch 'users/:id/update' => "users#update"
-  patch "users/:id/update_designer" => "users#update_designer"
   get 'users/:id/likes' => "users#likes"
   get 'users/:id/timeline' => "users#following_posts"
+  get 'users/:id/edit' => "users#edit"
+  patch 'users/:id/update' => "users#update"
 
   get 'posts/index'=> "posts#index"
   get 'posts/new' => "posts#new"
@@ -33,6 +28,8 @@ Rails.application.routes.draw do
 
   get '/' => "home#top"
   get "about" => "home#about"
+  get "terms" => "home#terms"
+  get "privacy" => "home#privacy"
 
   resources :users do
     member do
@@ -41,8 +38,8 @@ Rails.application.routes.draw do
   end
   resources :relationships,  only: [:create, :destroy]
 
-  get "/checkout/confirm" => "checkout#confirm"
-  post "checkout/pay" => "checkout#pay"
+  # get "/checkout/confirm" => "checkout#confirm"
+  # post "checkout/pay" => "checkout#pay"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

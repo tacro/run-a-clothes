@@ -1,38 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :set_current_user
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def set_current_user
-    @current_user = User.find_by(id: session[:user_id])
-  end
-
-  def authenticate_user
-    if @current_user == nil
-      flash[:notice] = "ログインしてください"
-      redirect_to("/login")
+  def after_sign_in_path_for(resource)
+        "/users/#{current_user.id}"
     end
-  end
 
-  def authenticate_designer
-    if @current_user.user_group != 2
-      flash[:notice] = "デザイナー情報を教えてください！"
-      redirect_to("/users/#{@current_user.id}/signup_designer")
+
+  protected
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :user_group, :accepted])
+      # devise_parameter_sanitizer.permit(:account_update, keys: [:username])
     end
-  end
 
   def forbid_login_user
-    if @current_user
+    if user_signed_in?
       flash[:notice] = "すでにログインしています"
       redirect_to("/")
     end
   end
-
-  def forbid_login_designer
-    if @current_user.user_group == 2
-      flash[:notice] = "デザイナー登録済みです"
-      redirect_to("/")
-      end
-  end
-
 
 end

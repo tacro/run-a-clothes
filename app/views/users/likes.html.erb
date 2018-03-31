@@ -1,39 +1,34 @@
 <div class="main user-show">
   <div class="container">
     <div class="user">
-      <% if @user.icon_image_name %>
-    　　  <%= image_tag @user.icon_image_name.thumb.url %>
+      <% if @user.avatar %>
+    　　  <%= image_tag @user.avatar.thumb.url %>
     　<% else %>
     　　<%= image_tag("/user_images/default_icon.png") %>
     　<% end %>
-      <h2><%= @user.name %></h2>
+      <h2><%=@user.username %></h2>
       <%= render 'follow_form' %>
 　　　 <%= render 'stats' %>
-      <%if @user.user_group == 2%>
-        <p><%= @user.brand_name %></p>
-        <!-- <h2>Profile:</h2> -->
-        <p><%= simple_format(@user.designer_profile) %></p>
-      <% end %>
-      <%if @current_user %>
-        <%if @user.id == @current_user.id %>
-          <p><%= @user.email %></p>
-          <%=  link_to( "プロフィール設定", "/users/#{@user.id}/edit") %>
+
+      <p><%= simple_format(@user.profile) %></p>
+
+      <%if user_signed_in? %>
+        <%if @user.id == current_user.id %>
+          <%=  link_to( "プロフィール編集", "/users/#{@user.id}/edit") %>
+            <div class="clear_float"></div>
+          <%=  link_to( "設定", edit_user_registration_path) %>
           <div class="clear_float"></div>
-          <%= link_to( "ログアウト" ,"/logout" , {method: "post"}) %>
+          <%= link_to( "ログアウト" , destroy_user_session_path, method: :delete) %>
         <% end %>
       <% end %>
     </div>
     <div class="clear_float"></div>
-    <% if @user.brand_name %>
+
       <ul class="user-tabs">
         <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
         <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
       </ul>
-    <% else %>
-      <ul class="user-tabs">
-        <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
-      </ul>
-    <% end %>
+
       <% @likes.each do |like| %>
           <% post = Post.find_by(id: like.post_id) %>
           <div class="image_index">

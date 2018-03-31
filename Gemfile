@@ -10,6 +10,9 @@ end
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
 
+gem 'devise'
+gem 'omniauth-twitter'
+
 gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

@@ -1,0 +1,44 @@
+<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">Sign up</div>
+    <div class="form users-form">
+        <div class="form-body">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+
+            <%= f.hidden_field :user_group, :value => 1 %>
+
+            <div class="field">
+            <%= f.label :username %>
+            <%= f.text_field :username, autofocus: true %>
+
+            <%= f.label :email %><br />
+            <%= f.email_field :email,  autocomplete: "email" %>
+
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off" %>
+
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+
+            <div class="agree">
+              <%= f.check_box :accepted ,{},checked_value = "true",unchecked_value = "false" %>
+              <%= link_to("利用規約", "/terms") + '及び'+link_to("プライバシーポリシー", "/privacy")+'に同意する' %>
+            </div>
+
+
+
+            <div class="field">
+              <%= f.submit "Sign up" %>
+            </div>
+          <% end %>
+          <div class="clear_float"/>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+   </div>
