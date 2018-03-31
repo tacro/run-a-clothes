@@ -5,7 +5,6 @@
       <div class="form-body">
 
         <%= content_tag(:div, flash[:error], :style=>'color:red') if flash[:error] %>
-        <%= content_tag(:div, flash[:notice], :style=>'color:red') if flash[:notice] %>
         <%= content_tag(:div, flash[:alert], :style=>'color:red') if flash[:alert] %>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
