@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    mount_uploader :avatar, AvatarUploader
+    # mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,6 +12,8 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: :false },
             length: { minimum: 4, maximum: 20 },
             format: { with: /\A[a-z0-9]+\z/, message: "ユーザー名は半角英数字です"}
+
+  has_many :posts, foreign_key: "designer_id", class_name: "Post", dependent: :destroy
 
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followings, through: :following_relationships

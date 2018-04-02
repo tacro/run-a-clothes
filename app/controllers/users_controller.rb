@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, {only: [:logout,:edit,:update, :register_designer, :update_designer, :following_posts]}
   before_action :ensure_correct_user, {only: [:edit, :update, :following_posts]}
-  
+  before_action :set_s3_direct_post, only: [:edit, :update]
+
   def show
     @user = User.find_by(id: params[:id])
   end
@@ -66,5 +67,10 @@ class UsersController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to("/")
     end
+  end
+
+  private
+  def set_s3_direct_post
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "user_images/avatar/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
   end
 end

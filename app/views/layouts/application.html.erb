@@ -6,9 +6,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'slicknav.css' %>
+    <%= javascript_include_tag 'jquery.slicknav.min.js' %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   </head>
 
   <body>
@@ -20,17 +23,17 @@
         <% if user_signed_in? %>
             <li class="icon">
               <%= link_to("/users/#{current_user.id}/timeline") do %>
-              <span class="fas fa-home fa-2x"></span> HOME
+              <span class="fas fa-home font-icon"></span>
               <% end %>
             </li>
             <li class="icon">
               <%= link_to("/posts/new") do%>
-              <span class="far fa-plus-square fa-2x"></span> POST
+              <span class="far fa-plus-square font-icon"></span>
               <% end %>
             </li>
-            <li>
+            <li class="icon">
               <%= link_to("/users/#{current_user.id}") do %>
-              <%= image_tag current_user.avatar.thumb.url, :class =>"user-icon" %>
+                <span class="far fa-user font-icon"></span>
               <% end %>
             </li>
         <% else %>
@@ -62,4 +65,12 @@
       <%= yield %>
     </header>
   </body>
+
+  <script>
+        jQuery(function($){
+            $('#gnav').slicknav();
+        });
+  </script>
+
+
 </html>

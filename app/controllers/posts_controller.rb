@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, {only: [:comment]}
+  before_action :authenticate_user!, {only: [:comment, :new, :create, :edit, :update, :destroy]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+  before_action :set_s3_direct_post, only: [:new, :create]
   # before_action :authenticate_designer, {only: [:new, :create, :edit, :update, :destroy]}
 
   def index
@@ -17,13 +18,13 @@ class PostsController < ApplicationController
       :designer_id,
       # {image_name: []},
       :image_name,
-      :remote_image_url,
+      # :remote_image_url,
       # :price,
       # :caption,
       :detail
     )
-    post[:image_name]= post[:remote_image_url]
-    post[:remote_image_url] = ""
+    # post[:image_name]= post[:remote_image_url]
+    # post[:remote_image_url] = ""
     @post = Post.new(post)
     if @post.save
       flash[:notice]="投稿しました"
@@ -52,7 +53,7 @@ class PostsController < ApplicationController
       :designer_id,
       # {image_name: []},
       :image_name,
-      :remote_image_url,
+      # :remote_image_url,
       # :price,
       # :caption,
       :detail
@@ -93,6 +94,11 @@ class PostsController < ApplicationController
                           user_id: current_user.id)
     @comment.save
     redirect_to :action => "show", :id => @comment.post_id
+  end
+
+  private
+  def set_s3_direct_post
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "post_images/images/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
   end
 
 end

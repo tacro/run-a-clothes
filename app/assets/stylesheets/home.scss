@@ -80,9 +80,11 @@ body {
 
 .container img{
        width  : 32%;
-       height : 45.24%;
+       height : 165px;
        float: left;
        margin: 0.5% 0.49%;
+       object-fit: cover;
+       object-position: 100% 100%;
      }
 
 /* ヘッダー ================================ */
@@ -96,16 +98,28 @@ header {
 .header-menus .user-icon {
   width: 32px;
   height: 32px;
-  margin-bottom: 3px;
+  object-fit: cover;
+  // margin-bottom: 5px;
   border-radius: 50%;
-  vertical-align: middle;
-background-color: white;
+  background-color: white;
 }
 
 .header-menus .icon {
-  margin: 5px 0;
+  margin: 0 2.5px;
   vertical-align: middle;
   object-fit: cover;
+}
+
+
+.header-menus .font-icon{
+  font-size: 22px;
+  margin-right: 3px;
+}
+
+.header-menus .atag{
+  display:block;
+  height:100%;
+  width:100%
 }
 
 .header-logo {
@@ -123,7 +137,7 @@ background-color: white;
 
 .header-menus {
   float: right;
-  padding-right: 20px;
+  padding-right: 7px;
 }
 
 .header-menus li {
@@ -131,13 +145,22 @@ background-color: white;
   line-height: 64px;
   font-size: 16px;
   color: white;
-  padding-left: 15px;
+  padding-left: 8px;
 }
 
 .header-menus a {
   float: left;
   font-size: 13px;
   color: white;
+}
+
+/* footer ================================ */
+#footer {
+  color: white;
+  background-color: black;
+  text-align: center;
+  padding: 10px 0;
+  height: 50px;
 }
 
 /* about ================================ */
@@ -235,4 +258,11 @@ background-color: white;
   width: 100%;
   border-radius: 0 0 2px 2px;
   font-size: 14px;
+}
+
+/* post images ============================== */
+.thumbnail{
+  width  : 32%;
+  height : 45.24%;
+  object-fit: cover;
 }

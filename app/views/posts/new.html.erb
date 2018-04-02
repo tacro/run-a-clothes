@@ -12,12 +12,10 @@
             </div>
           <% end %>
 
-          <%= form_for @post, html: {id:"myform"}, :url => { :controller => :posts, :action => :create } do |f|%>
+          <%= form_for @post, :url => { :controller => :posts, :action => :create } ,html: { class: "directUpload", data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f|%>
           <div class="field" >
             <%= f.label("アイテム画像（必須）") %>
-            <%= f.file_field :image_name,  :id => "upload"%>
-
-            <%= f.hidden_field :remote_image_url %>
+            <%= f.file_field :image_name %>
 
             <div class="preview"><img id="crop_img" /></div>
             <div class="clear_float"></div>
@@ -28,7 +26,7 @@
             <%= f.label("コメント") %>
             <%= f.text_area :detail, :placeholder => "アイテムに関するこだわりなどあれば、自由に入力してください"%>
 
-            <%= f.submit("投稿", :id => "_submit")  %>
+            <%= f.submit("投稿")  %>
           <% end %>
         </div>
       </div>
@@ -39,4 +37,4 @@
 
 <%= stylesheet_link_tag    'cropper.min.css' %>
 <%= javascript_include_tag 'cropper.min.js' %>
-<%= javascript_include_tag 'crop_image.js' %>
+<%= javascript_include_tag 'post_image.js' %>

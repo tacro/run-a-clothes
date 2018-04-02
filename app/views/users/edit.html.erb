@@ -10,12 +10,15 @@
                  </div>
         <% end %>
         <div class="field" >
-          <%= form_for @user, :url => { :controller => :users, :action => :update } do |f|%>
+          <%= form_for @user, :url => { :controller => :users, :action => :update }, html: { class: "directUpload", data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f|%>
           <%= f.label("ユーザー名") %>
           <%= f.text_field :username %>
 
           <%= f.label("アイコン") %>
           <%= f.file_field :avatar %>
+
+          <div class="preview"><img id="crop_img" /></div>
+          <div class="clear_float"></div>
 
           <%= f.label("プロフィール") %>
           <%= f.text_area :profile %>
@@ -28,3 +31,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_include_tag 'post_avatar.js' %>

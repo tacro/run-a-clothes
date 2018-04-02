@@ -4,7 +4,7 @@
       <% @posts.each do |post| %>
         <div class="post-user-name">
           <% if @designer.avatar %>
-        　　  <%= image_tag @designer.avatar.thumb.url, :class =>"user-icon" %>
+        　　  <%= image_tag @designer.avatar, :class =>"user-icon" %>
         　<% else %>
         　　<%= image_tag("/user_images/default_icon.png", :class =>"user-icon") %>
         　<% end %>
@@ -12,7 +12,7 @@
         </div>
         <div>
           <%= link_to("/posts/#{post.id}") do %>
-          <%= image_tag post.image_name.standard.url, :class => "item-image"%>
+          <%= image_tag post.image_name, :class => "item-image"%>
           <% end %>
         </div>
         <div class="clear_float"></div>

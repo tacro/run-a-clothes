@@ -2,7 +2,7 @@
   <div class="container">
     <div class="user">
       <% if @user.avatar %>
-    　　  <%= image_tag @user.avatar.thumb.url %>
+    　　  <%= image_tag @user.avatar %>
     　<% else %>
     　　<%= image_tag("/user_images/default_icon.png") %>
     　<% end %>
@@ -34,7 +34,7 @@
         <% @user.posts.each do |post| %>
          <div class="image_index">
            <%= link_to("/posts/#{post.id}") do %>
-              <%= image_tag post.image_name.thumb.url %>
+              <%= image_tag post.image_name %>
            <% end %>
          </div>
        <% end %>
