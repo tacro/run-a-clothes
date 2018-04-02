@@ -16,6 +16,11 @@ $(function() {
     dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
     replaceFileInput: false,
     acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+    // singleFileUploads: false,
+    maxNumberOfFiles: 1,
+    sequentialUploads: true,
+    limitMultiFileUploads:1,
+    limitConcurrentUploads: 1,
 
     add: function(e, data){
       if (data.files && data.files[0]) {
@@ -30,7 +35,15 @@ $(function() {
           $('#crop_img').cropper() // initialize cropper on preview image
          };
        reader.readAsDataURL(data.files[0]);
+       // $('#clear').show();
       };
+
+      // $('#clear').click(function() {
+      //     $('#image').val('');
+      //     $('.preview').empty();
+      //     $('form').reset();
+      //     $(this).hide();
+      //   });
 
       submitButton.on('click', function(){
       $('form').submit(function(){
@@ -44,6 +57,7 @@ $(function() {
         })
      });
     },
+
 
     progressall: function (e, data) {
       var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -83,7 +97,7 @@ $(function() {
 
       progressBar.
         css("background", "red").
-        text("Failed");
+        text("Upload Failed!");
       }
     });
   });

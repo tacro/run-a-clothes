@@ -13,6 +13,9 @@ gem 'rails', '~> 5.1.4'
 gem 'devise'
 gem 'omniauth-twitter'
 
+# to redirect htttps
+gem 'rack-canonical-host'
+
 gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

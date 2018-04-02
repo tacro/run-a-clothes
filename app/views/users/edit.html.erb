@@ -15,7 +15,7 @@
           <%= f.text_field :username %>
 
           <%= f.label("アイコン") %>
-          <%= f.file_field :avatar %>
+          <%= f.file_field :avatar ,accept: 'image/jpg,image/jpeg,image/png,image/gif' %>
 
           <div class="preview"><img id="crop_img" /></div>
           <div class="clear_float"></div>
