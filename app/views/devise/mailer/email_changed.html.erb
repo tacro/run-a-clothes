@@ -1,5 +1,7 @@
 <p>Hello <%= @email %>!</p>
 
+<p>こんにちは、ラナクロ運営チームです。</p>
+
 <% if @resource.try(:unconfirmed_email?) %>
   <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
   <p>あなたのメールアドレスが、次のアドレスに変更されようとしています： <%= @resource.unconfirmed_email %>.</p>
