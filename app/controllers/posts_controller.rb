@@ -18,13 +18,13 @@ class PostsController < ApplicationController
       :designer_id,
       # {image_name: []},
       :image_name,
-      # :remote_image_url,
+      :remote_image_url,
       # :price,
       # :caption,
       :detail
     )
-    # post[:image_name]= post[:remote_image_url]
-    # post[:remote_image_url] = ""
+    post[:image_name]= post[:remote_image_url]
+    post[:remote_image_url] = ""
     @post = Post.new(post)
     if @post.save
       flash[:notice]="投稿しました"
@@ -52,7 +52,7 @@ class PostsController < ApplicationController
       # :name,
       :designer_id,
       # {image_name: []},
-      :image_name,
+      # :image_name,
       # :remote_image_url,
       # :price,
       # :caption,

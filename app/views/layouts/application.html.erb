@@ -29,9 +29,9 @@
               <span class="far fa-plus-square font-icon"></span>
               <% end %>
             </li>
-            <li class="icon">
+            <li>
               <%= link_to("/users/#{current_user.id}") do %>
-                <span class="far fa-user font-icon"></span>
+              <%= image_tag current_user.avatar.thumb.url, :class =>"user-icon" %>
               <% end %>
             </li>
         <% else %>

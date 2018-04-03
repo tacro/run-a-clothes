@@ -12,10 +12,12 @@
             </div>
           <% end %>
 
-          <%= form_for @post, :url => { :controller => :posts, :action => :create } ,html: { class: "directUpload", data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f|%>
+          <%= form_for @post, :url => { :controller => :posts, :action => :create }  do |f|%>
           <div class="field" >
             <%= f.label("アイテム画像（必須）") %>
-            <%= f.file_field :image_name, accept: 'image/jpg,image/jpeg,image/png,image/gif', id: 'image' %>
+            <%= f.file_field :image_name, accept: 'image/jpg,image/jpeg,image/png,image/gif', :id => "image" %>
+
+            <%= f.hidden_field :remote_image_url %>
 
             <!-- <input type="button" id="clear" value="画像を選び直す"> -->
 
@@ -28,7 +30,7 @@
             <%= f.label("コメント") %>
             <%= f.text_area :detail, :placeholder => "アイテムに関するこだわりなどあれば、自由に入力してください"%>
 
-            <%= f.submit("投稿")  %>
+            <%= f.submit("投稿", :id => '_submit') %>
           <% end %>
         </div>
       </div>
@@ -39,5 +41,4 @@
 
 <%= stylesheet_link_tag    'cropper.min.css' %>
 <%= javascript_include_tag 'cropper.min.js' %>
-<%= javascript_include_tag 'post_image.js' %>
-<%= javascript_include_tag 'canvas-to-blob.min.js' %>
+<%= javascript_include_tag 'crop_image.js' %>

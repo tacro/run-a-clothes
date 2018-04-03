@@ -1,6 +1,6 @@
 
   //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
-  $("#upload").change(function(e) {
+  $("#image").change(function(e) {
     var file = e.target.files[0],
         reader = new FileReader(),
         $preview = $(".preview");
