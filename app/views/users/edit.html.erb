@@ -10,7 +10,7 @@
                  </div>
         <% end %>
         <div class="field" >
-          <%= form_for @user, :url => { :controller => :users, :action => :update } do |f|%>
+          <%= form_for @user, :url => { :controller => :users, :action => :update }, html: { class: "directUpload", data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f|%>
           <%= f.label("ユーザー名") %>
           <%= f.text_field :username %>
 
@@ -21,7 +21,7 @@
           <%= f.label("プロフィール") %>
           <%= f.text_area :profile %>
 
-          <%= f.submit("保存", "data-disable-with" => "更新中...") %>
+          <%= f.submit("保存") %>
 
         <% end %>
         </div>
@@ -29,3 +29,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_include_tag 'post_avatar.js' %>
