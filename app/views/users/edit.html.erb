@@ -21,7 +21,7 @@
           <%= f.label("プロフィール") %>
           <%= f.text_area :profile %>
 
-          <%= f.submit("保存") %>
+          <%= f.submit("保存", "data-disable-with" => "更新中...") %>
 
         <% end %>
         </div>

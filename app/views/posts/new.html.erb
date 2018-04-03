@@ -30,7 +30,7 @@
             <%= f.label("コメント") %>
             <%= f.text_area :detail, :placeholder => "アイテムに関するこだわりなどあれば、自由に入力してください"%>
 
-            <%= f.submit("投稿", :id => '_submit') %>
+            <%= f.submit("投稿", :id => '_submit', "data-disable-with" => "送信中...") %>
           <% end %>
         </div>
       </div>
