@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ラナクロ run-a-clothes</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+          <%= link_to("ラナクロ", "/") %>
+      </div>
+      <ul class="header-menus">
+        <% if user_signed_in? %>
+            <li class="icon">
+              <%= link_to("/users/#{current_user.id}/timeline") do %>
+              <span class="fas fa-home font-icon"></span>
+              <% end %>
+            </li>
+            <li class="icon">
+              <%= link_to("/posts/new") do%>
+              <span class="far fa-plus-square font-icon"></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to("/users/#{current_user.id}") do %>
+              <% if current_user.avatar %>
+                <%= image_tag current_user.avatar, :class =>"user-icon" %>
+              <% else %>
+                <%= image_tag("/user_images/default_icon.png", :class => "user-icon" )%>
+              <% end %>
+              <% end %>
+            </li>
+        <% else %>
+        <li>
+          <%= link_to("About","/about") %>
+        </li>
+          <li>
+            <%= link_to("登録", new_user_registration_path) %>
+          </li>
+          <li>
+            <%= link_to("ログイン",new_user_session_path) %>
+          </li>
+        <% end %>
+      </ul>
+
+      <% if flash[:notice] %>
+        <div class="flash">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <% if flash[:alert].present? %>
+        <%= flash[:alert] %>
+      <% end %>
+
+      <%= yield %>
+    </header>
+  </body>
+
+</html>

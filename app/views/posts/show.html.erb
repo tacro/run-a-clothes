@@ -1,0 +1,95 @@
+<div class="main posts-show">
+  <!-- <div class="container"> -->
+    <div class="posts-show-item">
+      <!-- show information of the item -->
+      <div class="post-user-name">
+        <% if @user.avatar %>
+      　　  <%= image_tag @user.avatar.thumb.url, :class =>"user-icon" %>
+      　<% else %>
+      　　<%= image_tag("/user_images/default_icon.png", :class =>"user-icon") %>
+      　<% end %>
+        <%= link_to(@user.username , "/users/#{@user.id}") %>
+      </div>
+      <div>
+        <%= image_tag @post.image_name.standard.url, :class => "item-image"%>
+      </div>
+      <div class="clear_float"></div>
+      <div class="post-right">
+     <!-- likes -->
+     <%if current_user %>
+        <% if Like.find_by(user_id: current_user.id, post_id: @post.id) %>
+           <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %>
+            <span class="fas fa-heart like-btn-unlike"></span>
+           <% end %>
+        <% else %>
+          <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
+            <span class="fas fa-heart like-btn"></span>
+          <% end %>
+        <% end %>
+    <% else %>
+        <span class="fas fa-heart like-btn"></span>
+    <% end %>
+      <div class="fa">
+        <%= @likes_count %> likes
+      </div>
+      </div>
+      <div class="clear_float"></div>
+
+      <div class="headline">
+        <%= simple_format(@post.detail) %>
+      </div>
+
+      <!-- comments -->
+      <div class="headline">
+        コメント
+      </div>
+      <% @comments.each do |comment| %>
+        <div class="comments">
+          <!-- <div class="post-right"> -->
+            <%= link_to("/users/#{comment.user.id}") do %>
+              <% if comment.user.avatar %>
+            　　  <%= image_tag comment.user.avatar.thumb.url, :class =>"commentator_icon" %>
+            　<% else %>
+            　　<%= image_tag("/user_images/default_icon.png", :class =>"commentator_icon") %>
+            　<% end %>
+            <% end %>
+            <div class="commentator_name">
+              <%= link_to(comment.user.username, "/users/#{comment.user.id}") %>
+            </div>
+              <div class="comment_content">
+              <%= simple_format(comment.comment) %>
+            </div>
+        <%if current_user %>
+          <% if comment.user_id == current_user.id || @post.designer_id == current_user.id %>
+          <div class="post-menus">
+            <%= link_to("削除", "/comments/#{comment.id}/destroy",{method: "post"}) %>
+          </div>
+          <% end %>
+        <% end %>
+        </div>
+      <% end %>
+      <%= form_tag("/posts/#{@post.id}/comment") do %>
+      <div class="comment_area">
+        <textarea name="comment"></textarea>
+      </div>
+      <button type="submit" class="button">コメントする</button>
+    <% end %>
+    <!-- time post created -->
+      <div class="post-time">
+        <%= @post.created_at %>
+      </div>
+
+    <!-- link to edit and destroy -->
+    <%if current_user %>
+      <% if @post.designer_id == current_user.id %>
+      <div class="post-menus">
+        <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+        <%= link_to "削除",
+                    {:controller => "posts", :action => "destroy"},
+                    method: "post"%>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  <!-- </div> -->
+</div>

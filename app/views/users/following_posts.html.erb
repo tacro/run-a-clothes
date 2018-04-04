@@ -1,0 +1,40 @@
+<div class="main posts-index">
+  <div class="posts-show-item">
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>
+        <div class="post-user-name">
+          <% if @designer.avatar %>
+        　　  <%= image_tag @designer.avatar, :class =>"user-icon" %>
+        　<% else %>
+        　　<%= image_tag("/user_images/default_icon.png", :class =>"user-icon") %>
+        　<% end %>
+          <%= link_to(@designer.username , "/users/#{@designer.id}") %>
+        </div>
+        <div>
+          <%= link_to("/posts/#{post.id}") do %>
+          <%= image_tag post.image_name, :class => "item-image"%>
+          <% end %>
+        </div>
+        <div class="clear_float"></div>
+        <div class="post-right">
+       <!-- likes -->
+       <%if current_user %>
+          <% if Like.find_by(user_id: current_user.id, post_id: post.id) %>
+             <%= link_to("/likes/#{post.id}/destroy", {method: "post"}) do %>
+              <span class="fas fa-heart like-btn-unlike"></span>
+             <% end %>
+          <% else %>
+            <%= link_to("/likes/#{post.id}/create", {method: "post"}) do %>
+              <span class="fas fa-heart like-btn"></span>
+            <% end %>
+          <% end %>
+        <% end %>
+        <div class="fa">
+          <% likes_count = Like.where(post_id: post.id).count %>
+          <%= likes_count %> likes
+        </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

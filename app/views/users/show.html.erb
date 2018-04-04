@@ -1,0 +1,43 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <% if @user.avatar %>
+    　　  <%= image_tag @user.avatar %>
+    　<% else %>
+    　　<%= image_tag("/user_images/default_icon.png") %>
+    　<% end %>
+      <h2><%=@user.username %></h2>
+      <%= render 'follow_form' %>
+　　　 <%= render 'stats' %>
+
+      <p><%= simple_format(@user.profile) %></p>
+
+      <%if user_signed_in? %>
+        <%if @user.id == current_user.id %>
+          <%=  link_to( "プロフィール編集", "/users/#{@user.id}/edit") %>
+            <div class="clear_float"></div>
+          <%=  link_to( "設定", edit_user_registration_path) %>
+          <div class="clear_float"></div>
+          <%= link_to( "ログアウト" ,destroy_user_session_path, method: :delete) %>
+        <% end %>
+      <% end %>
+
+    </div>
+
+    <div class="clear_float"></div>
+
+        <ul class="user-tabs">
+          <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+          <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+        </ul>
+
+        <% @user.posts.each do |post| %>
+         <div class="image_index">
+           <%= link_to("/posts/#{post.id}") do %>
+              <%= image_tag post.image_name.thumb.url %>
+           <% end %>
+         </div>
+       <% end %>
+
+  </div>
+</div>

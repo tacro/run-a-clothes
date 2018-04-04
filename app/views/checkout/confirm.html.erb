@@ -1,0 +1,6 @@
+<h1>Checkout#confirm</h1>
+<%= form_tag(action: :pay, method: :post) do %>
+  <% if Rails.env.development? %>
+   <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="PAYJP_PUBLIC_KEY"></script>
+  <% end %>
+<% end %>

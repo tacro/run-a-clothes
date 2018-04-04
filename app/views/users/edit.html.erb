@@ -1,0 +1,33 @@
+<div class="main users-edit">
+  <div class="container">
+    <div class="form-heading">Edit Profile</div>
+    <div class="form users-form">
+      <div class="form-body">
+
+        <% @user.errors.full_messages.each do |message| %>
+                 <div class="form-error">
+                   <%= message %>
+                 </div>
+        <% end %>
+        <div class="field" >
+          <%= form_for @user, :url => { :controller => :users, :action => :update }, html: { class: "directUpload", data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f|%>
+          <%= f.label("ユーザー名") %>
+          <%= f.text_field :username %>
+
+          <%= f.label("アイコン") %>
+          <%= f.file_field :avatar ,accept: 'image/jpg,image/jpeg,image/png,image/gif' %>
+
+
+          <%= f.label("プロフィール") %>
+          <%= f.text_area :profile %>
+
+          <%= f.submit("保存") %>
+
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag 'post_avatar.js' %>
