@@ -19,7 +19,7 @@
 
             <%= f.label :password %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <em style="font-size:9pt"><%= @minimum_password_length %> <%= t('activerecord.attributes.user.char_min') %></em>
             <% end %><br />
             <%= f.password_field :password, autocomplete: "off" %>
 
