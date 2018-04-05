@@ -209,15 +209,35 @@ ja:
       user:
         name: 名前
         password: パスワード
-        password_confirmation: パスワード確認
+        password_confirmation: パスワード再入力
         email: メールアドレス
         current_password: 現在のパスワード
         new_password: 新しいパスワード
         forgot_password: パスワードを忘れた場合
         confirm_instructions: 確認メールが届かない
         unlock_instructions: アカウントが凍結された
-        sign_up: サインアップ
+        sign_up: 新規登録
         log_in: ログイン
         username: ユーザー名（半角英数字）
         followers: フォロワー
         followings: フォロー中
+        user: ユーザー
+        back: 戻る
+        edit: プロフィール編集
+        setting: 設定
+        logout: ログアウト
+        posts: 投稿
+        likes: いいね!
+        avatar: アイコン
+        profile: プロフィール
+        back: 戻る
+        if_you_want_to_change: (変更する場合のみ)
+        enter_curr_pass: (現在のパスワードを入力してください)
+        char_min: 文字以上の長さにしてください
+      post:
+        new: 新規投稿
+        image: アイテム画像（必須）
+        comment: コメント
+        comment_placeholder: アイテムに関するこだわりなどあれば、自由に入力してください
+        post: 投稿
+        posting: 送信中...

@@ -14,11 +14,17 @@
 
       <%if user_signed_in? %>
         <%if @user.id == current_user.id %>
-          <%=  link_to( "プロフィール編集", "/users/#{@user.id}/edit") %>
+          <%=  link_to( "/users/#{@user.id}/edit") do%>
+          <%= label :user, :edit %>
+          <% end %>
             <div class="clear_float"></div>
-          <%=  link_to( "設定", edit_user_registration_path) %>
+          <%=  link_to(edit_user_registration_path) do %>
+          <%= label :user, :setting %>
+          <% end %>
           <div class="clear_float"></div>
-          <%= link_to( "ログアウト" ,destroy_user_session_path, method: :delete) %>
+          <%= link_to(destroy_user_session_path, method: :delete) do%>
+          <%= label :user, :logout %>
+          <% end %>
         <% end %>
       <% end %>
 
@@ -27,8 +33,16 @@
     <div class="clear_float"></div>
 
         <ul class="user-tabs">
-          <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
-          <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+          <li class="active">
+            <%= link_to("/users/#{@user.id}") do%>
+            <%= label :user, :posts %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to( "/users/#{@user.id}/likes") do%>
+            <%= label :user, :likes %>
+            <% end %>
+          </li>
         </ul>
 
         <% @user.posts.each do |post| %>

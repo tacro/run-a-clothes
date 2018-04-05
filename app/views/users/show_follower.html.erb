@@ -4,8 +4,8 @@
     <% @user.followers.each do |user| %>
       <div class="users-index-item">
         <div class="user-left">
-          <% if @user.avatar %>
-        　　  <%= image_tag @user.avatar %>
+          <% if user.avatar %>
+        　　  <%= image_tag user.avatar %>
         　<% else %>
         　　<%= image_tag("/user_images/default_icon.png") %>
         　<% end %>
@@ -14,6 +14,9 @@
           <%= link_to(user.username, "/users/#{user.id}") %>
         </div>
       </div>
+    <% end %>
+    <%= link_to( "/users/#{@user.id}") do %>
+    <%= label :user, :back %>
     <% end %>
   </div>
 </div>

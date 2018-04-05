@@ -1,6 +1,8 @@
 <div class="main users-edit">
   <div class="container">
-    <div class="form-heading">Edit Profile</div>
+    <div class="form-heading">
+      <%= label :user, :edit %>
+    </div>
     <div class="form users-form">
       <div class="form-body">
 
@@ -11,17 +13,17 @@
         <% end %>
         <div class="field" >
           <%= form_for @user, :url => { :controller => :users, :action => :update }, html: { class: "directUpload", data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f|%>
-          <%= f.label("ユーザー名") %>
+          <%= f.label :username %>
           <%= f.text_field :username %>
 
-          <%= f.label("アイコン") %>
+          <%= f.label :avatar %>
           <%= f.file_field :avatar ,accept: 'image/jpg,image/jpeg,image/png,image/gif' %>
 
 
-          <%= f.label("プロフィール") %>
+          <%= f.label :profile %>
           <%= f.text_area :profile %>
 
-          <%= f.submit("保存") %>
+          <%= f.submit :label => :update %>
 
         <% end %>
         </div>

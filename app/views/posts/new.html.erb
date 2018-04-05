@@ -1,7 +1,9 @@
 <div class="main posts-new">
   <div class="container">
 
-  <h1 class="form-heading">新規投稿</h1>
+  <h1 class="form-heading">
+    <%= label :post, :new %>
+  </h1>
 
     <div class="form">
       <div class="form-body">
@@ -15,7 +17,7 @@
           <%= form_for @post, :url => { :controller => :posts, :action => :create }, :id=>'myform' do |f|%>
 
           <div class="field" >
-            <%= f.label("アイテム画像（必須）") %>
+            <%= f.label :image %>
             <%= f.file_field :image_name, accept: 'image/jpg,image/jpeg,image/png,image/gif', :id => "image" %>
             <%= f.hidden_field :remote_image_url %>
 
@@ -25,10 +27,10 @@
             <%= f.hidden_field :designer_id, :value => current_user.id %>
             <div class="clear_float"></div>
 
-            <%= f.label("コメント") %>
-            <%= f.text_area :detail, :placeholder => "アイテムに関するこだわりなどあれば、自由に入力してください"%>
+            <%= f.label :comment %>
+            <%= f.text_area :detail, :placeholder =>  t('activerecord.attributes.post.comment_placeholder')%>
 
-            <%= f.submit("投稿", :id => '_submit', "data-disable-with" => "送信中...") %>
+            <%= f.submit(t('activerecord.attributes.post.post'), :id => '_submit', "data-disable-with" =>t('activerecord.attributes.post.posting')) %>
           <% end %>
         </div>
       </div>

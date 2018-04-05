@@ -32,6 +32,14 @@
 en:
   hello: "Hello world"
 
+  helpers:
+    select:
+      prompt: Please select
+    submit:
+      create: Sign up
+      submit: Save
+      update: Update
+
   activerecord:
     attributes:
       user:
@@ -46,3 +54,18 @@ en:
         unlock_instructions: Didn't receive unlock instructions?
         sign_up: Sign up
         log_in: Log in
+        edit: edit profile
+        setting: setting
+        logout: logout
+        posts: Posts
+        likes: Likes
+        if_you_want_to_change: (if you want to change)
+        enter_curr_pass: (enter the current password to change)
+        char_min: characters minimum
+      post:
+        new: New Post
+        image: Image (required)
+        comment: Comment
+        comment_placeholder: Please add the comment as you like if you want.
+        post: Post
+        posting: uploading...

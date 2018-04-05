@@ -42,10 +42,14 @@
           <%= link_to("About","/about") %>
         </li>
           <li>
-            <%= link_to("登録", new_user_registration_path) %>
+            <%= link_to(new_user_registration_path) do%>
+            <%= label :user, :sign_up %>
+            <% end %>
           </li>
           <li>
-            <%= link_to("ログイン",new_user_session_path) %>
+            <%= link_to(new_user_session_path) do %>
+            <%= label :user, :log_in %>
+            <% end %>
           </li>
         <% end %>
       </ul>

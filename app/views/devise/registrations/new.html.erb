@@ -1,6 +1,8 @@
 <div class="main users-new">
   <div class="container">
-    <div class="form-heading">Sign up</div>
+    <div class="form-heading">
+      <%= label :user, :sign_up %>
+    </div>
     <div class="form users-form">
         <div class="form-body">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -33,7 +35,7 @@
 
 
             <div class="field">
-              <%= f.submit "Sign up" %>
+              <%= f.submit :label => :create  %>
             </div>
           <% end %>
           <div class="clear_float"/>
