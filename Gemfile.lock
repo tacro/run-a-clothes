@@ -323,6 +323,9 @@ GEM
     public_suffix (3.0.2)
     puma (3.11.3)
     rack (2.0.4)
+    rack-canonical-host (0.2.3)
+      addressable (> 0, < 3)
+      rack (>= 1.0.0, < 3)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.1.6)
@@ -454,6 +457,7 @@ DEPENDENCIES
   payjp
   pg (~> 0.18)
   puma (~> 3.7)
+  rack-canonical-host
   rails (~> 5.1.4)
   rails_12factor
   rmagick

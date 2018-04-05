@@ -14,7 +14,7 @@ gem 'devise'
 gem 'omniauth-twitter'
 
 # to redirect htttps
-# gem 'rack-canonical-host'
+gem 'rack-canonical-host'
 
 gem 'carrierwave'
 gem 'carrierwave-base64'
