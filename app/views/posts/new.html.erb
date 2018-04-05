@@ -12,14 +12,12 @@
             </div>
           <% end %>
 
-          <%= form_for @post, :url => { :controller => :posts, :action => :create }  do |f|%>
+          <%= form_for @post, :url => { :controller => :posts, :action => :create } , :id => "myform" do |f|%>
+
           <div class="field" >
             <%= f.label("アイテム画像（必須）") %>
             <%= f.file_field :image_name, accept: 'image/jpg,image/jpeg,image/png,image/gif', :id => "image" %>
-
             <%= f.hidden_field :remote_image_url %>
-
-            <!-- <input type="button" id="clear" value="画像を選び直す"> -->
 
             <div class="preview"><img id="crop_img" /></div>
             <div class="clear_float"></div>

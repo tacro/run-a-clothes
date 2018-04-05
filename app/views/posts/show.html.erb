@@ -4,7 +4,7 @@
       <!-- show information of the item -->
       <div class="post-user-name">
         <% if @user.avatar %>
-      　　  <%= image_tag @user.avatar.thumb.url, :class =>"user-icon" %>
+      　　  <%= image_tag @user.avatar, :class =>"user-icon" %>
       　<% else %>
       　　<%= image_tag("/user_images/default_icon.png", :class =>"user-icon") %>
       　<% end %>
@@ -48,7 +48,7 @@
           <!-- <div class="post-right"> -->
             <%= link_to("/users/#{comment.user.id}") do %>
               <% if comment.user.avatar %>
-            　　  <%= image_tag comment.user.avatar.thumb.url, :class =>"commentator_icon" %>
+            　　  <%= image_tag comment.user.avatar, :class =>"commentator_icon" %>
             　<% else %>
             　　<%= image_tag("/user_images/default_icon.png", :class =>"commentator_icon") %>
             　<% end %>
