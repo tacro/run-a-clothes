@@ -2,7 +2,7 @@
   <div class="container">
     <div class="user">
       <% if @user.avatar %>
-    　　  <%= image_tag @user.avatar.thumb.url %>
+    　　  <%= image_tag @user.avatar %>
     　<% else %>
     　　<%= image_tag("/user_images/default_icon.png") %>
     　<% end %>
