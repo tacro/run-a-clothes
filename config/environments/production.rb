@@ -65,15 +65,26 @@ Rails.application.configure do
   # SMTP Settings
   config.action_mailer.delivery_method = :smtp
 
+  # config.action_mailer.smtp_settings = {
+  # 	address:               'mail.gandi.net',
+  # 	port:      	           587,
+  # 	domain:                ENV['DOMAIN'],
+  # 	user_name:             ENV['USER_NAME_GANDI'],
+  # 	password:              ENV['PASSWORD_GANDI'],
+  # 	authentication:        'plain',
+  # 	enable_starttls_auto:  true
+  # }
+
   config.action_mailer.smtp_settings = {
-  	address:               'mail.gandi.net',
+  	address:               'smtp.gmail.com',
   	port:      	           587,
-  	domain:                ENV['DOMAIN'],
-  	user_name:             ENV['USER_NAME_GANDI'],
-  	password:              ENV['PASSWORD_GANDI'],
+  	domain:                'gmail.com',
+  	user_name:             ENV['USER_NAME_GMAIL'],
+  	password:              ENV['PASSWORD_GMAIL'],
   	authentication:        'plain',
   	enable_starttls_auto:  true
   }
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
