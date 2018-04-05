@@ -21,12 +21,12 @@
         <% if user_signed_in? %>
             <li class="icon">
               <%= link_to("/users/#{current_user.id}/timeline") do %>
-              <span class="fas fa-home font-icon"></span>
+              <span class="fas fa-home font-icon"></span>Home
               <% end %>
             </li>
             <li class="icon">
               <%= link_to("/posts/new") do%>
-              <span class="far fa-plus-square font-icon"></span>
+              <span class="far fa-plus-square font-icon"></span>Post
               <% end %>
             </li>
             <li>
