@@ -51,7 +51,7 @@ class UsersController < ApplicationController
         @users.each do |user|
           @designer = User.find_by(id: user.id)
           @posts = Post.where(designer_id: user.id)
-          if @posts.empty?
+          if @posts.nil?
             flash[:notice]="まだ投稿がありません…"
             redirect_to("/")
           end

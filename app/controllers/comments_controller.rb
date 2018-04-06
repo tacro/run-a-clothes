@@ -7,7 +7,7 @@ def destroy
                              user_id: current_user.id)
   @comment.destroy
   flash[:notice] = "コメントを削除しました"
-  redirect_to("/posts/#{@comment.post_id}")
+  redirect_to("/items/#{@comment.post_id}")
 end
 
 def ensure_correct_user

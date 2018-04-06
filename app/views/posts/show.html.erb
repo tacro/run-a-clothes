@@ -67,7 +67,7 @@
         <% end %>
         </div>
       <% end %>
-      <%= form_tag("/posts/#{@post.id}/comment") do %>
+      <%= form_tag("/items/#{@post.id}/comment") do %>
       <div class="comment_area">
         <textarea name="comment"></textarea>
       </div>
@@ -82,7 +82,7 @@
     <%if current_user %>
       <% if @post.designer_id == current_user.id %>
       <div class="post-menus">
-        <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+        <%= link_to("編集", "/items/#{@post.id}/edit") %>
         <%= link_to "削除",
                     {:controller => "posts", :action => "destroy"},
                     data: { confirm: "本当に削除してもいいですか？"} ,

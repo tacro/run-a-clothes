@@ -11,17 +11,17 @@ Rails.application.routes.draw do
   get 'users/:id/edit' => "users#edit"
   patch 'users/:id/update' => "users#update"
 
-  get 'posts/index'=> "posts#index"
-  get 'posts/new' => "posts#new"
-  post 'posts/create' => "posts#create"
-  post "posts/:id/comment" => "posts#comment"
+  # get 'items/index'=> "posts#index"
+  get 'items/new' => "posts#new"
+  post 'items/create' => "posts#create"
+  post "items/:id/comment" => "posts#comment"
 
   post "comments/:id/destroy" => "comments#destroy"
 
-  get 'posts/:id' => "posts#show"
-  get 'posts/:id/edit' => "posts#edit"
-  patch 'posts/:id/update' => "posts#update"
-  post 'posts/:id/destroy' => "posts#destroy"
+  get 'items/:id' => "posts#show"
+  get 'items/:id/edit' => "posts#edit"
+  patch 'ietms/:id/update' => "posts#update"
+  post 'items/:id/destroy' => "posts#destroy"
 
   post '/likes/:post_id/create' => "likes#create"
   post '/likes/:post_id/destroy' => "likes#destroy"

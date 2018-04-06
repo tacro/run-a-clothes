@@ -1,6 +1,6 @@
   <div class="container">
     <% @posts.each do |post| %>
-          <%= link_to("/posts/#{post.id}") do %>
+          <%= link_to("/items/#{post.id}") do %>
              <%= image_tag (post.image_name.thumb.url) %>
           <% end %>
         <% end %>

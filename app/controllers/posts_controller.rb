@@ -31,7 +31,7 @@ class PostsController < ApplicationController
       redirect_to("/")
       # NotificationMailer.post_email(current_user, @post).deliver
     else
-      render("posts/new")
+      render("items/new")
     end
   end
 
@@ -60,9 +60,9 @@ class PostsController < ApplicationController
     )
     if @post.update_attributes(post)
       flash[:notice]="投稿を編集しました"
-      redirect_to("/posts/#{@post.id}")
+      redirect_to("/items/#{@post.id}")
     else
-      render("posts/edit")
+      render("items/edit")
     end
   end
 
@@ -83,7 +83,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     if current_user.id != @post.designer_id
       flash[:notice] = "権限がありません"
-      redirect_to("/posts/#{@post.id}")
+      redirect_to("/items/#{@post.id}")
     end
   end
 
