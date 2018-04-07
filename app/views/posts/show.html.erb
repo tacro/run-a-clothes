@@ -41,7 +41,7 @@
       <!-- comments -->
       <% if @comments.present? %>
       <div class="headline">
-        コメント:
+        <span class="far fa-comment"></span><%= label :post, :comment %>:
       </div>
       <% end %>
       <% @comments.each do |comment| %>
@@ -57,7 +57,7 @@
             <div class="commentator_name">
               <%= link_to(comment.user.username, "/users/#{comment.user.id}") %>
             </div>
-              <div class="comment_content">
+            <div class="comment_content">
               <%= simple_format(comment.comment) %>
             </div>
         <%if current_user %>
@@ -75,11 +75,6 @@
       </div>
       <button type="submit" class="button">コメントする</button>
     <% end %>
-    <!-- time post created -->
-      <div class="post-time">
-        <%= @post.created_at %>
-      </div>
-
     <!-- link to edit and destroy -->
     <%if current_user %>
       <% if @post.designer_id == current_user.id %>
@@ -92,5 +87,9 @@
         </div>
       <% end %>
     <% end %>
+    <!-- time post created -->
+      <div class="post-time">
+        <%= @post.created_at %>
+      </div>
     </div>
 </div>
