@@ -70,21 +70,18 @@
       <%= yield %>
     </header>
 
-    <footer class="footer">
-      <%= link_to("/help") do %>
-        <%= t('view.help') %>
-      <% end %>
-      <%= link_to("About","/about") %>
-      <%= link_to("/terms") do %>
-        <%= t('view.terms') %>
-      <% end %>
-      <%= link_to("/privacy") do %>
-        <%= t('view.privacy_policy') %>
-      <% end %>
-      <p style="font-size: 13px">©2018 runaclo</p>
-    </footer>
-
   </body>
-
-
+  <footer class="footer">
+    <%= link_to("/help") do %>
+      <%= t('view.help') %>
+    <% end %>
+    <%= link_to("About","/about") %>
+    <%= link_to("/terms") do %>
+      <%= t('view.terms') %>
+    <% end %>
+    <%= link_to("/privacy") do %>
+      <%= t('view.privacy_policy') %>
+    <% end %>
+    <p style="font-size: 13px">©2018 runaclo</p>
+  </footer>
 </html>
