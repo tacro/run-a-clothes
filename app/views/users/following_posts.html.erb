@@ -33,9 +33,12 @@
           <% likes_count = Like.where(post_id: post.id).count %>
           <%= likes_count %> likes
         </div>
+        <div class="headline" style="margin-bottom: 30px">
+          <%= simple_format(render_with_hashtags(post.detail)) %>
         </div>
       <% end %>
     <% end %>
+    </div>
   </div>
   <div class="clear_float" style="margin-bottom: 30px"/>
 </div>

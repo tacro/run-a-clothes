@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'items/new' => "posts#new"
   post 'items/create' => "posts#create"
   post "items/:id/comment" => "posts#comment"
+  get 'items/hashtag/:name' => "posts#hashtags"
 
   post "comments/:id/destroy" => "comments#destroy"
 

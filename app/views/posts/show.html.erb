@@ -47,7 +47,7 @@
       <div class="clear_float"></div>
 
       <div class="headline">
-        <%= simple_format(@post.detail) %>
+        <%= simple_format(render_with_hashtags(@post.detail)) %>
       </div>
 
       <!-- comments -->

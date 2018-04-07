@@ -96,6 +96,12 @@ class PostsController < ApplicationController
     redirect_to :action => "show", :id => @comment.post_id
   end
 
+  def hashtags
+    @tag = Tag.find_by(name: params[:name])
+    @posts = @tag.posts
+    @num = @posts.length
+  end
+
   private
   def set_s3_direct_post
     @s3_direct_post = S3_BUCKET.presigned_post(key: "post_images/images/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')

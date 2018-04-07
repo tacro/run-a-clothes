@@ -270,6 +270,22 @@ header {
 .faq{
   margin: 15px 10px;
 }
+
+/* search ================================ */
+.search-word{
+  font-size: 16px;
+  margin-top: 8px;
+  text-align: center;
+  position: relative;
+  word-break: normal;
+  color: white;
+  border-bottom: solid 1px white;
+  margin-bottom: 3px;
+}
+
+.num-of-hits{
+  font-size: 12px;
+}
 //
 //
 // /* post images ============================== */
