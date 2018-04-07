@@ -31,6 +31,18 @@
       <div class="fa">
         <%= @likes_count %> likes
       </div>
+      <!-- link to edit and destroy -->
+      <%if current_user %>
+        <% if @post.designer_id == current_user.id %>
+        <div class="post-menus">
+          <%= link_to("編集", "/items/#{@post.id}/edit") %>
+          <%= link_to "削除",
+                      {:controller => "posts", :action => "destroy"},
+                      data: { confirm: "本当に削除してもいいですか？"} ,
+                      method: "post"%>
+          </div>
+        <% end %>
+      <% end %>
       </div>
       <div class="clear_float"></div>
 
@@ -75,22 +87,12 @@
       </div>
       <button type="submit" class="button">コメントする</button>
     <% end %>
-    <!-- link to edit and destroy -->
-    <%if current_user %>
-      <% if @post.designer_id == current_user.id %>
-      <div class="post-menus">
-        <%= link_to("編集", "/items/#{@post.id}/edit") %>
-        <%= link_to "削除",
-                    {:controller => "posts", :action => "destroy"},
-                    data: { confirm: "本当に削除してもいいですか？"} ,
-                    method: "post"%>
-        </div>
-      <% end %>
-    <% end %>
+
     <!-- time post created -->
       <div class="post-time">
         <%= @post.created_at %>
       </div>
     </div>
+
     <div class="clear_float" style="margin-bottom: 30px"/>
 </div>
