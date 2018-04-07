@@ -31,7 +31,7 @@ class PostsController < ApplicationController
       redirect_to("/")
       # NotificationMailer.post_email(current_user, @post).deliver
     else
-      render("items/new")
+      render("posts/new")
     end
   end
 
@@ -62,7 +62,7 @@ class PostsController < ApplicationController
       flash[:notice]="投稿を編集しました"
       redirect_to("/items/#{@post.id}")
     else
-      render("items/edit")
+      render("posts/edit")
     end
   end
 
