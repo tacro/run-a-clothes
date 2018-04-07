@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get "about" => "home#about"
   get "terms" => "home#terms"
   get "privacy" => "home#privacy"
+  get "help" => "home#help"
 
   resources :users do
     member do

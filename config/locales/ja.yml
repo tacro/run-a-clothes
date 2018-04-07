@@ -203,7 +203,12 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
-
+  view:
+      help: ヘルプ
+      terms: 利用規約
+      privacy_policy: プライバシーポリシー
+      sign_up: 新規登録
+      log_in: ログイン
   activerecord:
     attributes:
       user:

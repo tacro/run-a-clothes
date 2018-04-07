@@ -39,9 +39,11 @@
       </div>
 
       <!-- comments -->
+      <% if @comments.present? %>
       <div class="headline">
-        コメント
+        コメント:
       </div>
+      <% end %>
       <% @comments.each do |comment| %>
         <div class="comments">
           <!-- <div class="post-right"> -->

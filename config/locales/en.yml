@@ -40,6 +40,13 @@ en:
       submit: Save
       update: Update
 
+  view:
+      help: help
+      terms: terms of service
+      privacy_policy: privacy policy
+      sign_up: Sign Up
+      log_in: Log In
+
   activerecord:
     attributes:
       user:

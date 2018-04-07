@@ -43,12 +43,12 @@
         </li>
           <li>
             <%= link_to(new_user_registration_path) do%>
-            <%= label :user, :sign_up %>
+            <%= t('view.sign_up') %>
             <% end %>
           </li>
           <li>
             <%= link_to(new_user_session_path) do %>
-            <%= label :user, :log_in %>
+            <%= t('view.log_in') %>
             <% end %>
           </li>
         <% end %>
@@ -69,6 +69,22 @@
 
       <%= yield %>
     </header>
+
+    <footer class="footer">
+      <%= link_to("/help") do %>
+        <%= t('view.help') %>
+      <% end %>
+      <%= link_to("About","/about") %>
+      <%= link_to("/terms") do %>
+        <%= t('view.terms') %>
+      <% end %>
+      <%= link_to("/privacy") do %>
+        <%= t('view.privacy_policy') %>
+      <% end %>
+      <p style="font-size: 13px">©2018 runaclo</p>
+    </footer>
+
   </body>
+
 
 </html>

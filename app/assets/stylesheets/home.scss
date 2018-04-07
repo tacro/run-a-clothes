@@ -149,12 +149,24 @@ header {
 }
 
 /* footer ================================ */
-#footer {
-  color: white;
-  background-color: black;
+.footer {
   text-align: center;
-  padding: 10px 0;
+  font-size: 10px;
+  position: fixed;
+  bottom: 0;
+  padding-top: 5px;
+  width: 100%;
+  z-index: 1;
+
+  /* フッタの高さ */
   height: 50px;
+  background: black;
+  color: white;
+}
+
+.footer a{
+  font-size: 10px;
+  color:white;
 }
 
 /* about ================================ */
@@ -254,9 +266,15 @@ header {
   font-size: 14px;
 }
 
-/* post images ============================== */
-.thumbnail{
-  width  : 32%;
-  height : 45.24%;
-  object-fit: cover;
+/* FAQ ================================ */
+.faq{
+  margin: 15px 10px;
 }
+//
+//
+// /* post images ============================== */
+// .thumbnail{
+//   width  : 32%;
+//   height : 45.24%;
+//   object-fit: cover;
+// }

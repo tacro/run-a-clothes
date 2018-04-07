@@ -29,7 +29,7 @@
 
             <div class="agree">
               <%= f.check_box :accepted ,{},checked_value = "true",unchecked_value = "false" %>
-              <%= link_to("利用規約", "/terms") + '及び'+link_to("プライバシーポリシー", "/privacy")+'に同意する' %>
+              <%= link_to(t('view.terms') , "/terms") + '及び'+link_to(t('view.privacy_policy'), "/privacy")+'に同意する' %>
             </div>
 
 
