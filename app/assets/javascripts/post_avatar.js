@@ -19,6 +19,13 @@ $(function() {
 
     add: function(e, data){
       submitButton.on('click', function(){
+        $('.directUpload').submit(function(){
+          return false;
+        });
+        console.log(data.files[0]);
+        console.log(data);
+        console.log(data.files);
+        console.log(JSON.stringify(data.files));
         data.submit();
      });
     },

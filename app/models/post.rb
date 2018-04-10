@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  mount_base64_uploader :image_name, ItemImageUploader
+  # mount_base64_uploader :image_name, ItemImageUploader
   # compromised uploading serial images to use base64...
   # mount_uploaders :image_name, ItemImageUploader
   # serialize :image_name, JSON

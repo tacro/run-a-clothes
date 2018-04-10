@@ -41,11 +41,22 @@ $(function() {
          // $('#clear').show();
         };
         submitButton.on('click', function(e){
-          e.preventDefault();
+          $('.directUpload').submit(function(){
+            return false;
+          });
+
          // crop のデータを取得
          $('#crop_img').cropper('getCroppedCanvas').toBlob(function (blob){
+           console.log(data);
             data.files[0] = new File([blob], data.files[0].name);
             data.originalFiles[0] = data.files[0];
+            console.log(blob);
+            console.log(data.files[0]);
+            console.log(data);
+            console.log(data.files);
+            console.log(JSON.stringify(data.files));
+
+            // console.log(JSON.stringify(data));
             // at this point the data is correct on both browsers
             data.submit();
           })
@@ -60,9 +71,12 @@ $(function() {
         //     }
         //     return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
         // }
-        // lastData.files[0] = new File([blobData], lastData.files[0].name);
-        // lastData.originalFiles[0] = lastData.files[0];
-        // lastData.submit();
+        // data.files[0] = new File([blobData], data.files[0].name);
+        // console.log(data.files[0]);
+        // console.log(data);
+        // console.log(data.files);
+        // data.originalFiles[0] = data.files[0];
+        // data.submit();
         });
 
 
@@ -98,9 +112,9 @@ $(function() {
         form.append(input);
 
         //delete submit event which is false
-        $('form').off('submit');
+        // $('form').off('submit');
         //and submit again
-        $('.directUpload').submit();
+        // $('.directUpload').submit();
       },
 
       fail: function(e, data) {
