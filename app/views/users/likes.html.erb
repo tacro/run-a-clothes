@@ -48,7 +48,7 @@
           <% post = Post.find_by(id: like.post_id) %>
           <div class="image_index">
               <%= link_to("/items/#{post.id}") do %>
-                   <%= image_tag post.image_name %>
+              <%= image_tag post.image_name, :class=> "thumbnail" %>
               <% end %>
           </div>
       <% end %>
