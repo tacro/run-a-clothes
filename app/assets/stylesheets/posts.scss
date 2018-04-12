@@ -154,6 +154,12 @@
     left: 13%;
 }
 
+.comment_area textarea{
+  border-radius: 30%;
+  border-color: gray;
+  resize: none;
+}
+
 .post-time {
   color: #8899a6;
   margin-bottom: 10px;

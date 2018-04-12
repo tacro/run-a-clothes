@@ -83,7 +83,7 @@
       <% end %>
       <%= form_tag("/items/#{@post.id}/comment") do %>
       <div class="comment_area">
-        <textarea name="comment"></textarea>
+        <textarea name="comment" placeholder="add some comment..."></textarea>
       </div>
       <button type="submit" class="button">コメントする</button>
     <% end %>
@@ -92,7 +92,6 @@
       <div class="post-time">
         <%= @post.created_at %>
       </div>
+      <div class="clear_float" style="margin-bottom: 30px"/>
     </div>
-
-    <div class="clear_float" style="margin-bottom: 30px"/>
 </div>
