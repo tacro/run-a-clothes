@@ -12,19 +12,29 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def search_form
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
+  end
+
+  def search
+    @q = Post.search(params.require(:q).permit)
+    @posts = @q.result(distinct: true)
+  end
+
   def create
     post = params.require(:post).permit(
       # :name,
       :designer_id,
       # {image_name: []},
       :image_name,
-      :remote_image_url,
+      # :remote_image_url,
       # :price,
       # :caption,
       :detail
     )
-    post[:image_name]= post[:remote_image_url]
-    post[:remote_image_url] = ""
+    # post[:image_name]= post[:remote_image_url]
+    # post[:remote_image_url] = ""
     @post = Post.new(post)
     if @post.save
       flash[:notice]="投稿しました"

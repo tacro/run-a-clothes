@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'items/:id/edit' => "posts#edit"
   patch 'ietms/:id/update' => "posts#update"
   post 'items/:id/destroy' => "posts#destroy"
+  post 'items/search' => "posts#search"
 
   post '/likes/:post_id/create' => "likes#create"
   post '/likes/:post_id/destroy' => "likes#destroy"
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
   get "terms" => "home#terms"
   get "privacy" => "home#privacy"
   get "help" => "home#help"
+  get "search" => "posts#search_form"
 
   resources :users do
     member do

@@ -14,15 +14,14 @@
             </div>
           <% end %>
 
-          <%= form_for @post, :url => { :controller => :posts, :action => :create }, :id=>'myform' do |f|%>
+          <%= form_for @post, :url => { :controller => :posts, :action => :create } ,html: { class: "directUpload", data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f|%>
 
           <div class="field" >
             <%= f.label :image %>
             <%= f.file_field :image_name, accept: 'image/jpg,image/jpeg,image/png,image/gif', :id => "image" %>
-            <%= f.hidden_field :remote_image_url %>
 
-            <div class="preview"><img id="crop_img" /></div>
-            <div class="clear_float"></div>
+            <!-- <div class="preview"><img id="crop_img" /></div>
+            <div class="clear_float"></div> -->
 
             <%= f.hidden_field :designer_id, :value => current_user.id %>
             <div class="clear_float"></div>
@@ -39,6 +38,4 @@
   </div>
 </div>
 
-<%= stylesheet_link_tag    'cropper.min.css' %>
-<%= javascript_include_tag 'cropper.min.js' %>
-<%= javascript_include_tag 'crop_image.js' %>
+<%= javascript_include_tag 'post_image.js' %>

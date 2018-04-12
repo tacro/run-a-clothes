@@ -1,0 +1,9 @@
+<div class="container">
+  <!-- don't forget to add tabs (post,users,tags) like user/show -->
+  <div class="search-form">
+    <%= search_form_for @q, :url => { :controller => :posts, :action => :search } do |f|%>
+      <%= f.search_field :detail_cont, :class => "search-field", :placeholder=>"search" %>
+      <%= f.submit :class => "button" %>
+    <% end %>
+  </div>
+</div>

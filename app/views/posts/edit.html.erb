@@ -11,7 +11,7 @@
           <% end %>
         <div class="field" >
           <div class="posts-show-item">
-            <%= image_tag @post.image_name.standard.url, :class => "item-image"%>
+            <%= image_tag @post.image_name, :class => "item-image"%>
           </div>
             <div class="clear_float"></div>
           <%= form_for @post, :url => { :controller => :posts, :action => :update } do |f|%>

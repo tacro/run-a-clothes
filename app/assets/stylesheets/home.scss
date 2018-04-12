@@ -79,8 +79,8 @@ body {
 }
 
 .container img{
-       width  : 32%;
-       height : 45.24%;
+       // width  : 32%;
+       // height : 45.24%;
        float: left;
        margin: 0.5% 0.49%;
        object-fit: cover;
@@ -283,14 +283,38 @@ header {
   margin-bottom: 3px;
 }
 
+.search-form{
+  text-align: center;
+}
+
+.search-form .search-field{
+  background-color: white;
+  border-color: black;
+  box-shadow: 0;
+  width: 60%;
+  height: 28px;
+}
+
+.search-form .button{
+  max-width: 140px;
+  height: 37px;
+  margin-bottom: 12px;
+  text-align: center;
+  color: white;
+  background-color: black;
+  padding: 10px;
+  font-size: 15px;
+}
+
+
 .num-of-hits{
   font-size: 12px;
 }
 //
 //
-// /* post images ============================== */
-// .thumbnail{
-//   width  : 32%;
-//   height : 45.24%;
-//   object-fit: cover;
-// }
+/* post images ============================== */
+.thumbnail{
+  width  : 32%;
+  height : 180px;
+  object-fit: cover;
+}

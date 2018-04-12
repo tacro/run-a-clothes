@@ -26,29 +26,35 @@ $(function() {
       limitConcurrentUploads: 1,
 
       add: function(e, data){
-        if (data.files && data.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function(e) {
-            $('.preview').empty();
-            $('.preview').append($('<img>').attr({// insert preview image
-              src: e.target.result,
-              id: "crop_img",
-              title: data.files[0].name
-            }));
-            $('#crop_img').cropper() // initialize cropper on preview image
-           };
-         reader.readAsDataURL(data.files[0]);
-         // $('#clear').show();
-        };
+        // if (data.files && data.files[0]) {
+        //   var reader = new FileReader();
+        //   reader.onload = function(e) {
+        //     $('.preview').empty();
+        //     $('.preview').append($('<img>').attr({// insert preview image
+        //       src: e.target.result,
+        //       id: "crop_img",
+        //       title: data.files[0].name
+        //     }));
+        //     $('#crop_img').cropper() // initialize cropper on preview image
+        //    };
+        //  reader.readAsDataURL(data.files[0]);
+        // };
         submitButton.on('click', function(e){
-          e.preventDefault();
-         // crop のデータを取得
-         $('#crop_img').cropper('getCroppedCanvas').toBlob(function (blob){
-            data.files[0] = new File([blob], data.files[0].name);
-            data.originalFiles[0] = data.files[0];
-            // at this point the data is correct on both browsers
-            data.submit();
-          })
+          $('.directUpload').submit(function(){
+            return false;
+          });
+          data.submit();
+         // get a cropped image data
+         // $('#crop_img').cropper('getCroppedCanvas').toBlob(function (blob){
+         //    data.files[0] = new File([blob], data.files[0].name);
+         //    data.originalFiles[0] = data.files[0];
+         //    console.log(data.files[0]);
+         //    console.log(data);
+         //    console.log(data.files);
+         //    // at this point the data is correct on both browsers
+         //    data.submit();
+         //    // but submitted file is empty
+         //  })
         //  var canvas = $('#crop_img').cropper('getCroppedCanvas');
         //  var canvas_data = canvas.toDataURL();
         //  var blobData = dataURItoBlob(canvas_data);
@@ -64,8 +70,6 @@ $(function() {
         // lastData.originalFiles[0] = lastData.files[0];
         // lastData.submit();
         });
-
-
         // lastData = data;
       },
 

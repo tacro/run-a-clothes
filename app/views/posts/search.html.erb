@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="search-word">
+    <p class="num-of-hits"> posts</p>
+  </div>
+  <% @posts.each do |post| %>
+        <%= link_to("/items/#{post.id}") do %>
+           <%= image_tag (post.image_name.thumb.url) %>
+        <% end %>
+      <% end %>
+</div>
+<div class="clear_float" style="margin-bottom: 30px"/>

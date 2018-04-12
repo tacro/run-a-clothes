@@ -13,6 +13,9 @@ gem 'rails', '~> 5.1.4'
 gem 'devise'
 gem 'omniauth-twitter'
 
+# for searching
+gem 'ransack'
+
 # to redirect htttps
 # gem 'rack-canonical-host'
 
