@@ -5,7 +5,7 @@
   </div>
   <% @posts.each do |post| %>
         <%= link_to("/items/#{post.id}") do %>
-           <%= image_tag (post.image_name.thumb.url) %>
+        <%= image_tag (post.image_name), class:"thumbnail" %>
         <% end %>
       <% end %>
 </div>
