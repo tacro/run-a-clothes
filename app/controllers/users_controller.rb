@@ -55,17 +55,18 @@ class UsersController < ApplicationController
   end
 
   def following_posts
-      @user  = User.find(params[:id])
-      @users = @user.followings
-      if @users.present?
-        @users.each do |user|
-          @designer = User.find_by(id: user.id)
-          @posts = Post.where(designer_id: user.id)
-          if @posts.nil?
-            flash[:notice]="まだ投稿がありません…"
-            redirect_to("/")
-          end
+      users = User.find(params[:id]).followings
+      @posts = []
+      if users.present?
+        users.each do |user|
+          posts = Post.where(designer_id: user.id).order(created_at: :desc)
+          @posts.concat(posts)
         end
+        if @posts.nil?
+          flash[:notice]="まだ投稿がありません…"
+          redirect_to("/")
+        end
+        @posts.sort_by{|post| post.id}
       else
         flash[:notice]="誰かをフォローしてみましょう！"
         redirect_to("/")

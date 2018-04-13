@@ -3,12 +3,12 @@
     <% if @posts.present? %>
       <% @posts.each do |post| %>
         <div class="post-user-name">
-          <% if @designer.avatar %>
-        　　  <%= image_tag @designer.avatar, :class =>"user-icon" %>
+          <% if post.user.avatar %>
+        　　  <%= image_tag post.user.avatar, :class =>"user-icon" %>
         　<% else %>
         　　<%= image_tag("/user_images/default_icon.png", :class =>"user-icon") %>
         　<% end %>
-          <%= link_to(@designer.username , "/users/#{@designer.id}") %>
+          <%= link_to(post.user.username , "/users/#{post.designer_id}") %>
         </div>
         <div>
           <%= link_to("/items/#{post.id}") do %>
@@ -39,6 +39,6 @@
       <% end %>
     <% end %>
     </div>
-    <div class="clear_float" style="margin-bottom: 40px"/>
+    <div class="clear_float" style="margin-bottom: 50px"/>
   </div>
 </div>
