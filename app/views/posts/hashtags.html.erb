@@ -1,7 +1,7 @@
 <div class="container">
   <div class="search-word">
     #<%= @tag.name %>
-    <p class="num-of-hits"><%= @num %> posts</p>
+    <p class="num-of-hits"><%= @num %> items</p>
   </div>
   <% @posts.each do |post| %>
         <%= link_to("/items/#{post.id}") do %>

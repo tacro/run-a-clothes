@@ -3,6 +3,16 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, {only: [:edit, :update, :following_posts]}
   before_action :set_s3_direct_post, only: [:edit, :update]
 
+  def index
+    @q = User.search(params[:q])
+    @users = @q.result.order(created_at: :desc)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @users }
+    end
+  end
+
   def show
     @user = User.find_by(id: params[:id])
   end

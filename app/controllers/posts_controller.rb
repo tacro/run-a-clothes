@@ -5,21 +5,16 @@ class PostsController < ApplicationController
   # before_action :authenticate_designer, {only: [:new, :create, :edit, :update, :destroy]}
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @q = Post.search(params[:q])
+    @posts = @q.result.order(created_at: :desc)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @posts }
+    end
   end
 
   def new
     @post = Post.new
-  end
-
-  def search_form
-    @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
-  end
-
-  def search
-    @q = Post.search(params.require(:q).permit)
-    @posts = @q.result(distinct: true)
   end
 
   def create
@@ -105,6 +100,7 @@ class PostsController < ApplicationController
     @comment.save
     redirect_to :action => "show", :id => @comment.post_id
   end
+
 
   def hashtags
     @tag = Tag.find_by(name: params[:name])

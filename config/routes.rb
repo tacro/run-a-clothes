@@ -5,16 +5,19 @@ Rails.application.routes.draw do
      :omniauth_callbacks => "omniauth_callbacks"
    }
 
+  get 'users/search'=> "users#index"
   get 'users/:id' => "users#show"
   get 'users/:id/likes' => "users#likes"
   get 'users/:id/timeline' => "users#following_posts"
   get 'users/:id/edit' => "users#edit"
   patch 'users/:id/update' => "users#update"
 
-  # get 'items/index'=> "posts#index"
+  get 'items/search'=> "posts#index"
   get 'items/new' => "posts#new"
   post 'items/create' => "posts#create"
   post "items/:id/comment" => "posts#comment"
+
+  get 'hashtag/search' => "tags#index"
   get 'items/hashtag/:name' => "posts#hashtags"
 
   post "comments/:id/destroy" => "comments#destroy"
@@ -23,7 +26,6 @@ Rails.application.routes.draw do
   get 'items/:id/edit' => "posts#edit"
   patch 'ietms/:id/update' => "posts#update"
   post 'items/:id/destroy' => "posts#destroy"
-  post 'items/search' => "posts#search"
 
   post '/likes/:post_id/create' => "likes#create"
   post '/likes/:post_id/destroy' => "likes#destroy"

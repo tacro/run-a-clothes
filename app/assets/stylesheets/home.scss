@@ -287,31 +287,54 @@ header {
   text-align: center;
 }
 
+
 .search-form .search-field{
   background-color: white;
-  border-color: black;
-  box-shadow: 0;
+  border:solid 5px white;
+  box-shadow: 2px 0px 6px #858689;
   width: 60%;
   height: 28px;
 }
 
 .search-form .button{
-  max-width: 140px;
-  height: 37px;
-  margin-bottom: 12px;
-  text-align: center;
+  margin-bottom: 10px;
   color: white;
   background-color: black;
-  padding: 10px;
-  font-size: 15px;
+  font-size: 20px;
+  border: none;
 }
 
+
+.search-tabs {
+  background-color: black;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.search-tabs li {
+  float: left;
+  margin-left: 13%;
+}
+
+.search-tabs li.active {
+  border-bottom: 1px solid white;
+}
+
+.search-tabs li.active a {
+  color: white;
+}
+
+.search-tabs a {
+  display: inline-block;
+  padding: 6px 0;
+  color: #858689;
+}
 
 .num-of-hits{
   font-size: 12px;
 }
-//
-//
+
+
 /* post images ============================== */
 .thumbnail{
   width  : 32%;

@@ -1,0 +1,35 @@
+<div class="container">
+  <ul class="search-tabs">
+    <li class="active">
+      <%= link_to("Items","/items/search")%>
+    </li>
+    <li>
+      <%= link_to( "Designers","/users/search")%>
+    </li>
+    <li>
+      <%= link_to( "Tags","/hashtag/search")%>
+    </li>
+  </ul>
+
+  <div class="search-form">
+    <%= search_form_for @q, :url => { :controller => :posts, :action => :index } do |f|%>
+      <%= f.search_field :detail_cont_all, :class => "search-field", :placeholder=>"Search" %>
+      <%= button_tag :type => "submit", :class => "button" do %>
+        <i class="fas fa-search font-icon"></i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="search-word">
+    <% if  params[:q].present? && params[:q][:detail_cont].present? %>
+      <%= params[:q][:detail_cont] %>
+    <% end %>
+  </div>
+
+  <% @posts.each do |post| %>
+        <%= link_to("/items/#{post.id}") do %>
+           <%= image_tag (post.image_name), class: "thumbnail" %>
+        <% end %>
+  <% end %>
+  <div class="clear_float" style="margin-bottom: 30px"/>
+</div>

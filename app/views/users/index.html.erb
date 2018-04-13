@@ -1,0 +1,47 @@
+<div class="container">
+  <!-- don't forget to add tabs (post,users,tags) like user/show -->
+
+  <ul class="search-tabs">
+    <li>
+      <%= link_to("Items","/items/search")%>
+    </li>
+    <li class="active">
+      <%= link_to( "Designers","/users/search")%>
+    </li>
+    <li>
+      <%= link_to( "Tags","/hashtag/search")%>
+    </li>
+  </ul>
+
+  <div class="search-form">
+    <%= search_form_for @q, :url => { :controller => :users, :action => :index } do |f|%>
+      <%= f.search_field :username_cont, :class => "search-field", :placeholder=>"Search"%>
+      <%= button_tag :type => "submit", :class => "button" do %>
+        <i class="fas fa-search font-icon"></i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="search-word">
+    <% if  params[:q].present? && params[:q][:username_cont].present? %>
+      <%= params[:q][:username_cont] %>
+    <% end %>
+  </div>
+
+  <% @users.each do |user| %>
+    <div class="users-index-item">
+      <div class="user-left">
+        <% if user.avatar %>
+      　　  <%= image_tag user.avatar %>
+      　<% else %>
+      　　<%= image_tag("/user_images/default_icon.png") %>
+      　<% end %>
+      </div>
+      <div class="user-right">
+        <%= link_to(user.username, "/users/#{user.id}", style:"color: white") %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="clear_float" style="margin-bottom: 30px"/>
+</div>

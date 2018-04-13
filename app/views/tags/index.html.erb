@@ -1,0 +1,45 @@
+<div class="container">
+
+  <ul class="search-tabs">
+    <li>
+      <%= link_to("Items","/items/search")%>
+    </li>
+    <li>
+      <%= link_to( "Designers","/users/search")%>
+    </li>
+    <li class="active">
+      <%= link_to( "Tags","/hashtag/search")%>
+    </li>
+  </ul>
+
+  <div class="search-form">
+    <%= search_form_for @q, :url => { :controller => :tags, :action => :index } do |f|%>
+      <%= f.search_field :name_cont, :class => "search-field", :placeholder=>"Search" %>
+      <%= button_tag :type => "submit", :class => "button" do %>
+        <i class="fas fa-search font-icon"></i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="search-word">
+    <% if  params[:q].present? && params[:q][:name_cont].present? %>
+      <%= params[:q][:name_cont] %>
+    <% end %>
+  </div>
+
+  <% @tags.each do |tag| %>
+    <% if tag.posts.present? %>
+      <div class="users-index-item" style="margin: 15px 0">
+        <div class="user-left" style="margin-top: 5px">
+          <%= image_tag("/hashtag_icon.png") %>
+        </div>
+        <div class="user-right">
+          <p><%= link_to("#" + tag.name, "/items/hashtag/#{tag.name}", style:"color: white") %></p>
+          <p><%= link_to(tag.posts.length.to_s + 'posts', "/items/hashtag/#{tag.name}", style:"color: #858689") %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="clear_float" style="margin-bottom: 30px"/>
+</div>
