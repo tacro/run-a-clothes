@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, {only: [:comment, :new, :create, :edit, :update, :destroy]}
+  before_action :authenticate_user!, {only: [:index, :comment, :new, :create, :edit, :update, :destroy]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
   before_action :set_s3_direct_post, only: [:new, :create]
   # before_action :authenticate_designer, {only: [:new, :create, :edit, :update, :destroy]}

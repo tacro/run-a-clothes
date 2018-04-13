@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, {only: [:logout,:edit,:update, :register_designer, :update_designer, :following_posts]}
+  before_action :authenticate_user!, {only: [:index, :logout,:edit,:update, :register_designer, :update_designer, :following_posts]}
   before_action :ensure_correct_user, {only: [:edit, :update, :following_posts]}
   before_action :set_s3_direct_post, only: [:edit, :update]
 
