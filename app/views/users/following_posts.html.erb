@@ -16,7 +16,6 @@
           <% end %>
         </div>
         <div class="clear_float"></div>
-        <div class="post-right">
        <!-- likes -->
        <%if current_user %>
           <% if Like.find_by(user_id: current_user.id, post_id: post.id) %>
@@ -33,12 +32,11 @@
           <% likes_count = Like.where(post_id: post.id).count %>
           <%= likes_count %> likes
         </div>
-        <div class="headline" style="margin-bottom: 30px">
+        <div class="headline" style="margin-bottom: 30px; margin-left: 5px;">
           <%= simple_format(render_with_hashtags(post.detail)) %>
         </div>
       <% end %>
     <% end %>
-    </div>
     <div class="clear_float" style="margin-bottom: 50px"/>
   </div>
 </div>
