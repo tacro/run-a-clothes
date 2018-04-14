@@ -20,8 +20,9 @@
             <%= f.label :image %>
             <%= f.file_field :image_name, accept: 'image/jpg,image/jpeg,image/png,image/gif', :id => "image" %>
 
-            <!-- <div class="preview"><img id="crop_img" /></div>
-            <div class="clear_float"></div> -->
+            <div class="preview"></div>
+              <!-- <img id="crop_img" /></div> -->
+            <div class="clear_float"></div>
 
             <%= f.hidden_field :designer_id, :value => current_user.id %>
             <div class="clear_float"></div>

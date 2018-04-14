@@ -205,11 +205,16 @@
   resize: none;
 }
 
-.posts-new .preview {
-    display: block;
-    width: 300px;
-    height: 300px;
-    overflow: hidden;
+.posts-new .preview{
+  overflow: hidden;
+  display: block;
+  margin-left: 12%;
+}
+
+.posts-new img {
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: cover;
   }
 
 .posts-new textarea::-webkit-input-placeholder {

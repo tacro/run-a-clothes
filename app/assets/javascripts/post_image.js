@@ -26,19 +26,19 @@ $(function() {
       limitConcurrentUploads: 1,
 
       add: function(e, data){
-        // if (data.files && data.files[0]) {
-        //   var reader = new FileReader();
-        //   reader.onload = function(e) {
-        //     $('.preview').empty();
-        //     $('.preview').append($('<img>').attr({// insert preview image
-        //       src: e.target.result,
+        if (data.files && data.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            $('.preview').empty();
+            $('.preview').append($('<img>').attr({// insert preview image
+              src: e.target.result,
         //       id: "crop_img",
-        //       title: data.files[0].name
-        //     }));
+              title: data.files[0].name
+            }));
         //     $('#crop_img').cropper() // initialize cropper on preview image
-        //    };
-        //  reader.readAsDataURL(data.files[0]);
-        // };
+           };
+         reader.readAsDataURL(data.files[0]);
+        };
         submitButton.on('click', function(e){
           $('.directUpload').submit(function(){
             return false;
