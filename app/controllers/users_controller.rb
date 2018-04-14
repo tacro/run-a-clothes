@@ -66,7 +66,7 @@ class UsersController < ApplicationController
           flash[:notice]="まだ投稿がありません…"
           redirect_to("/")
         end
-        @posts.sort_by{|post| post.id}
+        @posts.sort_by!{|post| post.created_at}.reverse!
       else
         flash[:notice]="誰かをフォローしてみましょう！"
         redirect_to("/")
