@@ -124,6 +124,27 @@ header {
   line-height: 64px;
 }
 
+@media screen and ( max-width:375px ){
+  .header-logo img{
+    height: 25px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and ( max-width:320px ){
+  .header-logo img{
+    height: 18px;
+    margin-top: 23px;
+  }
+}
+
+@media screen and ( min-width:414px ){
+  .header-logo img{
+    height: 28px;
+    margin-top: 18px;
+  }
+}
+
 .header-logo a{
   color: white;
   font-size: 26px;

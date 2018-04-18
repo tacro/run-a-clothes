@@ -25,7 +25,9 @@
   <body>
     <header>
       <div class="header-logo">
-          <%= link_to("ラナクロ", "/") %>
+          <%= link_to("/") do %>
+          <%= image_tag("/logo.png", :class => "header-logo") %>
+          <% end %>
       </div>
       <ul class="header-menus">
         <% if user_signed_in? %>
