@@ -1,24 +1,31 @@
-# README
+# README - Run-a-clothes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Overview
+This is my first web application developed in Ruby on Rails 5.
+And this is also my project for 1st assignment of PIC10C 2018 spring, UCLA.
 
-Things you may want to cover:
+# Author
+Tacro Hashimoto (tacro[at]g.ucla.edu)
 
-* Ruby version
+# Description
+It's published here ( www.runaclo.io )
 
-* System dependencies
+This app works as SNS for fashon geeks.
+User can post or see a fashion item which is hand-made on Run-a-clothes.
 
-* Configuration
+This service attempts to change the way today's fashion is.
 
-* Database creation
+# Usage
+* requires log-in.
+In this app, you can ...
 
-* Database initialization
+1. See all fashon items posted here.
 
-* How to run the test suite
+2. Register/Log-in (associated with Twitter)
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Search posts, users, or hashtags *
 
-* Deployment instructions
+4. Post a fashion item you made *
 
-* ...
+5. Like or comment on items *
+
